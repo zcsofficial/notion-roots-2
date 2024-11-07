@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notion ROOTS - Awards</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="project.css">
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'century gothic', sans-serif;
+        }
+        body {
+            font-family: 'Century Gothic', sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: transparent;
+        }
+
+        /* Award Section Background */
+        .awards {
+            position: relative;
+            background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #fff;
+        }
+
+        .awards .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            z-index: 1;
+        }
+
+        .awards .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navbar Items Styling */
+        .navbar .navbar-nav .nav-link {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            padding: 10px 15px;
+        }
+
+        /* Hover Effects */
+        .navbar .navbar-nav .nav-link:hover {
+            color: #a2c27d;
+            text-decoration: none;
+        }
+
+        /* Active Item Styling */
+        .navbar .navbar-nav .nav-item.active .nav-link {
+            color: #a2c27d;
+            font-weight: bold;
+        }
+
+        .navbar.scrolled {
+            background-color: #333;
+            transition: background-color 1s;
+        }
+
+        /* Award Section Heading */
+        .awards h2 {
+            font-family: 'century gothic', sans-serif;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #333;
+        }
+
+        /* Content Section Styling */
+        .content {
+            padding: 40px 0;
+        }
+
+        /* Award Card Styling */
+        .award-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .award-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .award-card:hover {
+            transform: scale(1.05);
+        }
+
+        .award-info {
+            background: linear-gradient(to top, rgba(0.5, 0.8, 0.8, 1), rgba(0, 0, 0, 0));
+            padding: 20px;
+            color: white;
+        }
+
+        .award-info h5 {
+            font-family: 'century gothic', sans-serif;
+            font-weight: 700;
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .award-info p {
+            font-family: 'century gothic', sans-serif;
+            font-size: 0.9rem;
+            margin: 5px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730992852/vcmtxi5ht6gsxh4hoiv3.png" height="50" width="100%" alt="Notion Roots Logo"/>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/about%20us%20page/AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/projects%20page/project.html#">Projects</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/awards.html">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/contact%20us%20page/contact-us.html">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Awards Section -->
+    <section class="awards py-5">
+        <div class="overlay"></div> <!-- Overlay div -->
+        <div class="container">
+            <h2 class="text-center mb-5 mt-5">Awards</h2>
+            <div class="row">
+                <!-- Award Card 1 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="award-card">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003229/notion%20roots/imbioil5mqpdhg31y4fc.png" class="img-fluid" alt="Award 1">
+                        <div class="award-info">
+                            <h5>Best Green Design Award</h5>
+                            <p>Award for excellence in eco-friendly design for sustainable living.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Award Card 2 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="award-card">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/wjbkommks3o652sz70qz.jpg" class="img-fluid" alt="Award 2">
+                        <div class="award-info">
+                            <h5>Innovation in Architecture</h5>
+                            <p>Recognized for innovative and forward-thinking architectural designs.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Award Card 3 -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="award-card">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/py9qkk6memxfrq01qajq.jpg" class="img-fluid" alt="Award 3">
+                        <div class="award-info">
+                            <h5>Architect of the Year</h5>
+                            <p>Awarded for outstanding contributions to architectural excellence.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer text-white text-center py-3">
+        <p>Contact us at <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
+        <div>
+            <a href="https://www.instagram.com/notionroots" target="_blank"><i class="fab fa-instagram text-white mx-2"></i></a>
+            <a href="https://www.facebook.com/notion.roots" target="_blank"><i class="fab fa-facebook text-white mx-2"></i></a>
+            <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank"><i class="fab fa-youtube text-white mx-2"></i></a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
