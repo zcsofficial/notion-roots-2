@@ -19,13 +19,13 @@
 
         /* On hover, change the color to highlight the active item */
         .navbar .navbar-nav .nav-link:hover {
-            color: #a2c27d;  /* You can change this to any accent color (greenish tone) */
+            color: #DAF5DC;  /* You can change this to any accent color (greenish tone) */
             text-decoration: none;  /* Remove underline on hover */
         }
 
         /* Optional: Active item styling */
         .navbar .navbar-nav .nav-item.active .nav-link {
-            color: #a2c27d;  /* Highlight active item with the same accent color */
+            color: #DAF5DC;  /* Highlight active item with the same accent color */
             font-weight: bold;  /* Optionally, bold the active item */
         }
         
@@ -65,7 +65,7 @@
         }
 
         .navbar.scrolled {
-        background-color: #333; /* Dark background for better readability */
+        background-color: black; /* Dark background for better readability */
         transition: background-color 1s;
         }
 
@@ -124,8 +124,10 @@
             border-radius: 5px;
             position: absolute;
             bottom: 50px;
-            left: 50px;
-            width: 70%;  /* Adjust to control caption width */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%; /* Adjust to control caption width */
+            text-align: center; /* Center-align the text */
         }
 
         /* Carousel title styling */
@@ -155,7 +157,7 @@
 
         /* Hover effect for button */
         .carousel-action-btn .btn:hover {
-            background-color: #3e7f5c;
+            background-color: #DAF5DC;
         }
 
         /* Optional: Ensuring images cover the full container */
@@ -186,7 +188,7 @@
         .carousel-indicators .active {
             width: 20px;
             border-radius: 2px;
-            background-color: #a2c27d; /* Matches the accent color */
+            background-color: #DAF5DC; /* Matches the accent color */
         }
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
@@ -286,15 +288,20 @@
 
         /* Footer */
         footer {
-            background-color: #333;
-            color: #fff;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
             text-align: center;
             padding: 15px;
             font-size: 0.9em;
         }
+
+        footer a {
+            color: #fff; /* Ensure footer links are white */
+        }
+
         .footer i:hover {
-                color: #a2c27d; /* Matches navbar hover color */
-            }
+            color: #a2c27d; /* Matches navbar hover color */
+        }
 
 
         /* Carousel Animation */
@@ -312,7 +319,7 @@
             <a class="navbar-brand" href="index.html">
                 <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730992852/vcmtxi5ht6gsxh4hoiv3.png" height="50" width="100%" />
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
@@ -438,12 +445,12 @@
     </div>
 </div>
     <!-- Footer Section -->
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="text-white text-center py-3">
         <p>Contact us at <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
         <div>
-            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fa-brands fa-instagram text-white mx-2"></i></a>
-            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fa-brands fa-facebook text-white mx-2"></i></a>
-            <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank"><i class="fa-brands fa-youtube text-white mx-2"></i></a>
+            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fab fa-instagram text-white mx-2"></i></a>
+            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fab fa-facebook text-white mx-2"></i></a>
+            <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank"><i class="fab fa-youtube text-white mx-2"></i></a>
         </div>
     </footer>
     
