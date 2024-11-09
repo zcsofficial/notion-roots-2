@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
-       body, html {
+        body, html {
             font-family: 'Century Gothic', sans-serif;
-            background-color: #626947;
+            background-color: black;
         }
         /* Navbar Styling */
         .navbar {
@@ -66,18 +66,117 @@
             z-index: 1;
         }
         .social-icons a:hover {
-            color: #626947;
+            color: #00cc66;
         }
         .social-icons a {
             transition: color 0.3s ease;
         }
-        .map-container{
+
+        /* Reset and basic body styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Century Gothic', sans-serif;
             background-color: black;
         }
-        .contact-form{
-            background-color: #425b1e;
+
+        /* Main Contact Section */
+        .contact-section {
+            padding: 60px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f7f9fc;
+            
         }
-        /* Footer */
+        
+        .contact-wrapper {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        /* Contact Form Styling */
+        .contact-form {
+            padding: 40px;
+            flex: 1;
+        }
+        .contact-form h3 {
+            font-size: 1.75rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+        .contact-form .form-group label {
+            font-weight: 500;
+            color: #666;
+        }
+        .contact-form .form-control {
+            border: 1px solid #e3e3e3;
+            padding: 15px;
+            font-size: 0.95rem;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .contact-form button {
+            width: 100%;
+            background-color: #5a67d8;
+            color: #fff;
+            padding: 14px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover {
+            background-color: #4c51bf;
+        }
+
+        /* Map Section Styling */
+        .map-container {
+            width: 50%;
+            height: auto;
+            min-height: 400px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Contact Info Icons Styling */
+        .contact-info {
+            display: flex;
+            justify-content: space-around;
+            padding: 20px 40px;
+            background-color: #000;
+        
+        }
+        .contact-info div {
+            text-align: center;
+            flex: 1;
+        }
+        .contact-info i {
+            font-size: 1.75rem;
+            color: #5a67d8;
+            margin-bottom: 10px;
+        }
+        .contact-info h6 {
+            font-size: 0.9rem;
+            color: white;
+        }
+        .contact-heading{
+            color: white;
+        }
+       /* Footer */
        footer {
             background-color: #425b1e; /* Black background */
             color: #fff; /* White text */
@@ -108,11 +207,11 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html#">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/index.html#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/about%20us%20page/AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/projects%20page/project.html#">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/awards.html">Awards</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="file:///C:/Users/sharu/OneDrive/Desktop/arch-demo/contact%20us%20page/contact-us.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
@@ -125,49 +224,64 @@
             <p class="lead mb-5">If you have any questions or want to know more about our services, feel free to reach out.</p>
 
             <!-- Contact Form -->
-            <div class="contact-form text-dark p-4 rounded shadow mx-auto" style="max-width: 600px;">
-                <form>
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+            <section class="contact-section">
+                <div class="contact-wrapper">
+                    <!-- Contact Form -->
+                    <div class="contact-form">
+                        <h3>Get In Touch With Us</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit">Send Message</button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+            
+                    <!-- Map Section -->
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15711.551460761428!2d76.3694435!3d10.108264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0809d5db889d4d%3A0x59ef36c6683bb621!2sNotion%20ROOTS!5e0!3m2!1sen!2sin!4v1731002427720!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success btn-block">Send Message</button>
-                </form>
-            </div>
-        </div>
+                </div>
+            </section>
+            
     </section>
 
-    <!-- Contact Information -->
-    <section class="contact-info bg-light text-center py-5">
-        <div class="container">
-            <h2 class="h4 mb-4">Our Contact Information</h2>
-            <p>Email: info@notionroots.com</p>
-            <p>Phone: +123 456 789</p>
-            <p>Address: NOTION ROOTS, KOCHI, ALUVA, KERALA</p>
-            <div class="social-icons mt-3">
-                <a href="https://www.instagram.com/notionroots/" target="_blank" class="text-dark mx-2"><i class="fab fa-instagram fa-2x"></i></a>
-                <a href="https://www.facebook.com/notion.roots/" target="_blank" class="text-dark mx-2"><i class="fab fa-facebook fa-2x"></i></a>
-                <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank" class="text-dark mx-2"><i class="fab fa-youtube fa-2x"></i></a>
+
+<!-- Contact Information -->
+<section class="contact-info text-center py-5">
+    <div class="container">
+        <h2 class="contact-heading h4 mb-5">Our Contact Information</h2>
+        <!-- Contact Info Section with Icons -->
+        <div class="d-flex flex-row justify-content mt-5">
+            <div>
+                <i class="fas fa-map-marker-alt"></i>
+                <h6>NOTION ROOTS, KOCHI, ALUVA, KERALA</h6>
+            </div>
+            <div>
+                <i class="fas fa-phone-alt"></i>
+                <h6>+91 1234567890</h6>
+            </div>
+            <div>
+                <i class="fas fa-envelope"></i>
+                <h6>Info.NotionRoots@example.com</h6>
             </div>
         </div>
-    </section>
-
-    <!-- Google Maps Embed -->
-    <div class="map-container text-center mt-3 mb-3">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15711.551460761428!2d76.3694435!3d10.108264!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0809d5db889d4d%3A0x59ef36c6683bb621!2sNotion%20ROOTS!5e0!3m2!1sen!2sin!4v1731002427720!5m2!1sen!2sin" width="600" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
+</section>
+    
 
-    <!-- Footer -->
-    <footer class="text-white text-center py-3">
-        <p>Contact us at <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
+     <!-- Footer -->
+     <footer class="text-white text-center py-3">
+        <p>&copy; NOTION ROOTS 2024 | <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
         <div>
             <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fab fa-instagram text-white mx-2"></i></a>
             <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fab fa-facebook text-white mx-2"></i></a>
