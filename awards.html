@@ -29,14 +29,29 @@
             background-color: #f7f9fc;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            background-color: transparent;
+        /* Navbar Items Styling */
+        .navbar .navbar-nav .nav-link {
+            color: white;  /* Set the nav items to white color */
+            font-size: 1.1rem;  /* Adjust font size if needed */
+            font-weight: 400;  /* Adjust font weight for modern typography */
+            text-transform: uppercase;  /* Optionally, uppercase letters for a modern feel */
+            padding: 10px 15px;  /* Adjust padding to ensure the nav items are spaced well */
         }
 
+        /* On hover, change the color to highlight the active item */
+        .navbar .navbar-nav .nav-link:hover {
+            color: #aaa86b;  /* You can change this to any accent color (greenish tone) */
+            text-decoration: none;  /* Remove underline on hover */
+        }
+
+        /* Optional: Active item styling */
+        .navbar .navbar-nav .nav-item.active .nav-link {
+            color: #aaa86b;  /* Highlight active item with the same accent color */
+            font-weight: bold;  /* Optionally, bold the active item */
+        }
         .navbar.scrolled {
-            background-color: #425b1e;
-            transition: background-color 1s;
+        background-color: #425b1e; /* Dark background for better readability */
+        transition: background-color 1s;
         }
 
         /* Awards Section Background */
@@ -151,7 +166,7 @@
     <section class="awards">
         <div class="overlay"></div>
         <div class="container">
-            <h2>Awards</h2>
+            <h2 class="text-white">Awards</h2>
             <div class="row">
                 <!-- Award Card 1 -->
                 <div class="col-md-6 col-lg-4">
