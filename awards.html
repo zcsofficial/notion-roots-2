@@ -7,38 +7,39 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="project.css">
     <style>
-        /* Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'century gothic', sans-serif;
-        }
-        body {
             font-family: 'Century Gothic', sans-serif;
-            scroll-behavior: smooth; /* Enable smooth scrolling */
         }
+
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
         }
 
-        body > footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            background-color: #f7f9fc;
         }
-
 
         /* Navbar Styling */
         .navbar {
             background-color: transparent;
         }
 
-        /* Award Section Background */
+        .navbar.scrolled {
+            background-color: #425b1e;
+            transition: background-color 1s;
+        }
+
+        /* Awards Section Background */
         .awards {
             position: relative;
             background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg');
@@ -46,6 +47,8 @@
             background-position: center;
             background-repeat: no-repeat;
             color: #fff;
+            padding: 60px 0;
+            flex: 1;
         }
 
         .awards .overlay {
@@ -54,54 +57,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .awards .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Navbar Items Styling */
-        .navbar .navbar-nav .nav-link {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 400;
-            text-transform: uppercase;
-            padding: 10px 15px;
-        }
-
-        .navbar .navbar-nav .nav-link:hover {
-            color: #aaa86b;
-            text-decoration: none;
-        }
-
-        .navbar .navbar-nav .nav-item.active .nav-link {
-            color: #aaa86b;
-            font-weight: bold;
-        }
-
-        .navbar.scrolled {
-            background-color: #425b1e;
-            transition: background-color 1s;
-        }
-
-        /* Award Section Heading */
         .awards h2 {
-            font-family: 'century gothic', sans-serif;
             color: white;
-            margin-bottom: 1.5rem;
+            text-align: center;
+            padding: 20px 0;
         }
 
         /* Award Card Styling */
         .award-card {
-            position: relative;
             overflow: hidden;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
             margin-bottom: 20px;
-            transition: transform 0.3s, box-shadow 0.3s; /* Smooth transform */
         }
 
         .award-card img {
@@ -112,7 +83,7 @@
         }
 
         .award-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced hover shadow */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
             transform: scale(1.05);
         }
 
@@ -123,49 +94,32 @@
         }
 
         .award-info h5 {
-            font-family: 'century gothic', sans-serif;
             font-weight: 700;
-            margin: 0;
             font-size: 1.2rem;
         }
 
-        .award-info p {
-            font-family: 'century gothic', sans-serif;
-            font-size: 0.9rem;
-            margin: 5px 0 0;
-        }
-
-        /* Responsive Adjustments */
-        @media (max-width: 576px) {
-            .award-card {
-                margin-bottom: 15px;
-            }
-            .award-info h5 {
-                font-size: 1rem;
-            }
-            .award-info p {
-                font-size: 0.8rem;
-            }
-        }
-        
-       /* Footer */
-       footer {
+        /* Footer */
+        footer {
             background-color: #425b1e;
             color: #fff;
             text-align: center;
             padding: 15px;
             font-size: 0.9em;
+            margin-top: auto; /* Ensures footer stays at the bottom */
         }
 
         footer a {
             color: #fff;
         }
 
-        .footer i {
+        footer .social-icons i {
             font-size: 1.2rem;
+            margin: 0 10px;
+            color: #fff;
+            transition: color 0.3s;
         }
 
-        .footer i:hover {
+        footer .social-icons i:hover {
             color: #626947;
         }
     </style>
@@ -194,15 +148,15 @@
     </header>
 
     <!-- Awards Section -->
-    <section class="awards py-5">
+    <section class="awards">
         <div class="overlay"></div>
         <div class="container">
-            <h2 class="text-center mb-5 mt-5">Awards</h2>
+            <h2>Awards</h2>
             <div class="row">
                 <!-- Award Card 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="award-card">
-                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003229/notion%20roots/imbioil5mqpdhg31y4fc.png" class="img-fluid" alt="Eco-friendly design award trophy">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003229/notion%20roots/imbioil5mqpdhg31y4fc.png" alt="Eco-friendly design award trophy">
                         <div class="award-info">
                             <h5>Best Green Design Award</h5>
                             <p>Award for excellence in eco-friendly design for sustainable living.</p>
@@ -210,9 +164,9 @@
                     </div>
                 </div>
                 <!-- Award Card 2 -->
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="award-card">
-                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/wjbkommks3o652sz70qz.jpg" class="img-fluid" alt="Innovative architecture award image">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/wjbkommks3o652sz70qz.jpg" alt="Innovative architecture award image">
                         <div class="award-info">
                             <h5>Innovation in Architecture</h5>
                             <p>Recognized for innovative and forward-thinking architectural designs.</p>
@@ -220,9 +174,9 @@
                     </div>
                 </div>
                 <!-- Award Card 3 -->
-                <div class="col-md-6 col-lg-4 mb-4">
+                <div class="col-md-6 col-lg-4">
                     <div class="award-card">
-                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/py9qkk6memxfrq01qajq.jpg" class="img-fluid" alt="Architect of the Year award image">
+                        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/py9qkk6memxfrq01qajq.jpg" alt="Architect of the Year award image">
                         <div class="award-info">
                             <h5>Architect of the Year</h5>
                             <p>Awarded for outstanding contributions to architectural excellence.</p>
@@ -234,12 +188,12 @@
     </section>
 
     <!-- Footer -->
-    <footer class="text-white text-center py-3">
-        <p>&copy; NOTION ROOTS 2024 | <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
-        <div>
-            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fab fa-instagram text-white mx-2"></i></a>
-            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fab fa-facebook text-white mx-2"></i></a>
-            <a href="https://www.youtube.com/@notionroots" target="_blank"><i class="fab fa-youtube text-white mx-2"></i></a>
+    <footer>
+        <p>Contact us at <a href="mailto:info@notionroots.com">info@notionroots.com</a> | Follow us on social media</p>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@notionroots" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
     </footer>
 
