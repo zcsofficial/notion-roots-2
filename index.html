@@ -218,17 +218,19 @@
         }
         /* CSS for fade-in and fade-out transitions */
         body {
-        opacity: 1;
-        transition: opacity 0.8s ease-in-out;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out;
         }
 
         body.fade-out {
-        opacity: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out; /* Match this with JS timeout */
         }
 
         body.fade-in {
-        opacity: 1;
+            opacity: 1;
         }
+
     </style>
 </head>
 <body>
@@ -334,22 +336,25 @@
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", () => {
-    // Add initial fade-in effect when the page loads
-    document.body.classList.add("fade-in");
+    // Initial fade-in effect when the page loads
+    requestAnimationFrame(() => {
+        document.body.classList.add("fade-in");
+    });
 
-    // Add event listener to each link
+    // Apply fade-out on link clicks
     document.querySelectorAll('a[href]').forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
 
-            // Check if the link points to a different page and prevent hash link interference
+            // Ensure it’s an internal link and not a hash
             if (href && href.indexOf('#') === -1) {
-                e.preventDefault(); // Prevent default link behavior
+                e.preventDefault(); // Prevent default navigation
 
-                // Add the fade-out class to trigger the fade-out effect
+                // Trigger fade-out transition
+                document.body.classList.remove("fade-in");
                 document.body.classList.add("fade-out");
 
-                // After the fade-out duration, navigate to the link's href
+                // Delay the navigation until after the fade-out
                 setTimeout(() => {
                     window.location.href = href;
                 }, 800); // Match 800ms with CSS transition duration
@@ -357,21 +362,19 @@
         });
     });
 
-    // Remove fade-in class after page load to avoid animation on refresh
+    // Remove fade-in class after page load to avoid refresh animation
     window.addEventListener("load", () => {
         document.body.classList.remove("fade-in");
     });
 
-    // Handle back/forward button navigation
+    // Handle back/forward navigation with caching
     window.addEventListener("pageshow", (event) => {
         if (event.persisted) {
-            // Reapply fade-in effect on back/forward navigation if cached
             document.body.classList.remove("fade-out");
             document.body.classList.add("fade-in");
         }
     });
 });
-
 </script>
 </body>
 </html>
