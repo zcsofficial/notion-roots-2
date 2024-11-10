@@ -352,23 +352,26 @@
                 // After the fade-out duration, navigate to the link's href
                 setTimeout(() => {
                     window.location.href = href;
-                }, 400); // 800ms to match CSS transition duration
+                }, 800); // Match 800ms with CSS transition duration
             }
         });
     });
 
     // Remove fade-in class after page load to avoid animation on refresh
-    setTimeout(() => {
+    window.addEventListener("load", () => {
         document.body.classList.remove("fade-in");
-    }, 100);
+    });
 
     // Handle back/forward button navigation
-    window.addEventListener("pageshow", () => {
-        // Trigger the fade-in effect when navigating back/forward
-        document.body.classList.remove("fade-out");
-        document.body.classList.add("fade-in");
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+            // Reapply fade-in effect on back/forward navigation if cached
+            document.body.classList.remove("fade-out");
+            document.body.classList.add("fade-in");
+        }
     });
 });
+
 </script>
 </body>
 </html>
