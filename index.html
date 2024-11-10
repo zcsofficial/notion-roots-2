@@ -503,7 +503,7 @@
                 // After the fade-out duration, navigate to the link's href
                 setTimeout(() => {
                     window.location.href = href;
-                }, 300); // 800ms to match CSS transition duration
+                }, 400); // 800ms to match CSS transition duration
             }
         });
     });
@@ -511,7 +511,7 @@
     // Remove fade-in class after page load to avoid animation on refresh
     setTimeout(() => {
         document.body.classList.remove("fade-in");
-    }, 350);
+    }, 100);
 
     // Handle back/forward button navigation
     window.addEventListener("pageshow", () => {
