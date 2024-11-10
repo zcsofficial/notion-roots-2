@@ -323,43 +323,6 @@
             }
         });
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-        // Add initial fade-in effect when the page loads
-        document.body.classList.add("fade-in");
     
-        // Add event listener to each link
-        document.querySelectorAll('a[href]').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-    
-                // Check if the link points to a different page and prevent hash link interference
-                if (href && href.indexOf('#') === -1) {
-                    e.preventDefault(); // Prevent default link behavior
-    
-                    // Add the fade-out class to trigger the fade-out effect
-                    document.body.classList.add("fade-out");
-    
-                    // After the fade-out duration, navigate to the link's href
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 300); // 800ms to match CSS transition duration
-                }
-            });
-        });
-    
-        // Remove fade-in class after page load to avoid animation on refresh
-        setTimeout(() => {
-            document.body.classList.remove("fade-in");
-        }, 350);
-    
-        // Handle back/forward button navigation
-        window.addEventListener("pageshow", () => {
-            // Trigger the fade-in effect when navigating back/forward
-            document.body.classList.remove("fade-out");
-            document.body.classList.add("fade-in");
-        });
-    });
-    </script>
 </body>
 </html>
