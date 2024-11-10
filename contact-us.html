@@ -9,14 +9,18 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        /* Full Page Background */
+        /* Reset body and html margin/padding to avoid excess white space */
         body, html {
-            font-family: 'Century Gothic', sans-serif;
-            color: #fff;
-            height: 100%;
             margin: 0;
             padding: 0;
+            height: 100%;  /* Ensure full height of the viewport */
+            font-family: 'Century Gothic', sans-serif;
+        }
+
+        /* Contact Background Section */
+        .contact-bg {
             position: relative;
+            min-height: 100vh;  /* Ensure the background section takes full viewport height */
             background: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730991125/bqpa2y7qjhhxl61o7lva.jpg') center/cover no-repeat;
             background-size: cover;
         }
@@ -74,6 +78,7 @@
         }
         .header-section h1 {
             font-size: 2rem;
+            color: white;
             margin-bottom: 0.8rem;
             z-index: 2; /* Keep the header content above the overlay */
         }
@@ -249,8 +254,7 @@
 </head>
 <body>
 
-    <!-- Dark Overlay -->
-    <div class="overlay"></div>
+    
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
@@ -270,7 +274,9 @@
             </ul>
         </div>
     </nav>
-
+<div class="contact-bg">
+    <!-- Dark Overlay -->
+    <div class="overlay"></div>
     <!-- Header Section with Contact Info and Map -->
     <header class="header-section">
         <h1>Contact Us</h1>
@@ -340,6 +346,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <!-- JavaScript -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
