@@ -7,14 +7,31 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Century+Gothic&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset */
+        /* Reset and Basic Styling */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Lato', sans-serif;
+            font-family: 'Century Gothic', sans-serif;
+        }
+        body {
+            font-family: 'Century Gothic', sans-serif;
+            opacity: 0;  /* Initially hide the body for fade-in effect */
+            transform: translateY(1px);  /* Start position */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Fade-in transition */
+        }
+        /* Fade-in class for transition */
+        .fade-in {
+            opacity: 1;  /* Fully visible */
+            transform: translateY(0);  /* Original position */
+        }
+        /* Fade-out class for transition */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(1px);  /* Slightly move down during fade-out */
         }
 
         /* Navbar Items Styling */
@@ -42,68 +59,131 @@
         transition: background-color 1s;
         }
 
-        /* Carousel Styling */
-        .background-carousel {
+        /* Background Section Styling */
+        .background-section {
             position: relative;
-            height: 100vh;
-            overflow: hidden;
-        }
-        .background-carousel .carousel-item {
-            height: 100vh;
+            min-height: 100vh;
+            background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908106/vgawg3xr1crcz95fnsrc.jpg');
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
         }
-        .carousel-overlay {
+
+        .background-section .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
             z-index: 1;
         }
 
-        /* Overlay Container Styling */
-        .container-overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            z-index: 2;
-        }
-        .about-box {
-            background-color: rgba(69, 67, 67, 0.9);
+        /* Content Container Styling */
+        .content-container {
+            position: relative;
+            z-index: 2; /* Above overlay */
+            max-width: 1200px;
+            width: 100%;
             padding: 20px;
+        }
+
+        /* Card Group Styling */
+        .card-group-custom {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Individual Card Styling */
+        .about-card {
+            background-color: rgba(255, 255, 255, 0.9); /* Light background */
             border-radius: 8px;
-            color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            color: #333;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Team Member Styling */
-        .team-member img {
-            width: 80px;
-            height: 80px;
+        .about-card:hover {
+            transform: scale(1.05);
+        }
+
+        .about-card img {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            margin-bottom: 5px;
-        }
-        /* fade in & fade out */
-        body {
-            opacity: 0;  /* Initially hide the body */
-            transform: translateY(1px);  /* Start position  */
-            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+            margin-bottom: 15px;
         }
 
-        /* Fade-in class for transition */
-        .fade-in {
-            opacity: 1;  /* Fully visible */
-            transform: translateY(0);  /* Move to the original position */
+        /* Team Grid Styling within Our Team Card */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
         }
 
-        /* Fade-out class for transition */
-        .fade-out {
-            opacity: 0;
-            transform: translateY(1px);  /* Slightly move down during fade-out */
+        .team-member {
+            text-align: center;
+            width: 45%;
+        }
+
+        .team-member img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-member p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .about-card h3, .about-card h2 {
+            font-family: 'Century Gothic', sans-serif;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 992px) {
+            .card-group-custom {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-card {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-member {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -119,84 +199,68 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item active"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Background Carousel -->
-    <div id="backgroundCarousel" class="carousel slide background-carousel" data-ride="carousel" data-interval="5000">
-        <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908106/vgawg3xr1crcz95fnsrc.jpg');"></div>
-            <div class="carousel-item" style="background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg');"></div>
-            <div class="carousel-item" style="background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908396/akrlt9zz1h0jxgxlivay.jpg');"></div>
-        </div>
-        <div class="carousel-overlay"></div>
+    <!-- About Us Section -->
+    <section class="background-section">
+        <div class="overlay"></div> <!-- Dark overlay -->
+        <div class="content-container">
+            <h2 class="text-center mb-5" style="color: white;">About Us</h2>
+            <div class="card-group-custom">
+                <!-- Founder Card -->
+                <div class="about-card">
+                    <img src="https://via.placeholder.com/150" alt="Founder Image">
+                    <h3>Founder</h3>
+                    <p><strong>John Doe</strong><br>Founder & CEO</p>
+                    <p>With a vision for sustainable architecture, John Doe leads Notion ROOTS to redefine eco-friendly designs in urban spaces.</p>
+                </div>
 
-        <!-- About Us Containers positioned over the carousel -->
-        <div class="container-overlay">
-            <div class="container">
-                <div class="row">
-                    <!-- Founders Container -->
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="about-box text-center">
-                            <h3 class="mb-3">Founders</h3>
-                            <img src="https://via.placeholder.com/150" alt="Founder Image" class="img-fluid rounded-circle mb-3">
-                            <p><strong>Founder Name</strong><br>Position</p>
-                            <p>Brief description of the founder’s background, vision, and contributions to Notion ROOTS.</p>
+                <!-- About Us Card -->
+                <div class="about-card">
+                    <h2>About Us</h2>
+                    <p>At <strong>Notion ROOTS</strong>, we specialize in sustainable architectural designs that harmonize with the environment. Founded by a team of passionate architects, we blend cutting-edge technology with nature-conscious materials for lasting impact.</p>
+                </div>
+
+                <!-- Our Team Card -->
+                <div class="about-card">
+                    <h3>Our Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="https://via.placeholder.com/80" alt="Jane Smith">
+                            <p><strong>Jane Smith</strong><br>Lead Architect</p>
                         </div>
-                    </div>
-
-                    <!-- About Us Container -->
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="about-box text-center">
-                            <h2 class="mb-3">About Us</h2>
-                            <p class="lead">
-                                At <strong>Notion ROOTS</strong>, we are dedicated to sustainable architecture and creating environmentally conscious designs.
-                            </p>
-                            <p>Founded by a team of passionate architects and designers, Notion ROOTS blends modern technology with natural materials.</p>
+                        <div class="team-member">
+                            <img src="https://via.placeholder.com/80" alt="Sam Brown">
+                            <p><strong>Sam Brown</strong><br>Project Manager</p>
                         </div>
-                    </div>
-
-                    <!-- Our Team Container -->
-                    <div class="col-12 col-md-4 mb-4">
-                        <div class="about-box text-center">
-                            <h3 class="mb-3">Our Team</h3>
-                            <div class="team-grid d-flex flex-wrap justify-content-center">
-                                <div class="team-member text-center mx-2">
-                                    <img src="https://via.placeholder.com/80" alt="Team Member 1" class="img-fluid rounded-circle">
-                                    <p><strong>John Doe</strong><br>Lead Architect</p>
-                                </div>
-                                <div class="team-member text-center mx-2">
-                                    <img src="https://via.placeholder.com/80" alt="Team Member 2" class="img-fluid rounded-circle">
-                                    <p><strong>Jane Smith</strong><br>Design Director</p>
-                                </div>
-                                <div class="team-member text-center mx-2">
-                                    <img src="https://via.placeholder.com/80" alt="Team Member 3" class="img-fluid rounded-circle">
-                                    <p><strong>Sam Brown</strong><br>Project Manager</p>
-                                </div>
-                                <div class="team-member text-center mx-2">
-                                    <img src="https://via.placeholder.com/80" alt="Team Member 4" class="img-fluid rounded-circle">
-                                    <p><strong>Alex Lee</strong><br>Interior Designer</p>
-                                </div>
-                            </div>
+                        <div class="team-member">
+                            <img src="https://via.placeholder.com/80" alt="Alex Lee">
+                            <p><strong>Alex Lee</strong><br>Interior Designer</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://via.placeholder.com/80" alt="Emily White">
+                            <p><strong>Emily White</strong><br>Structural Engineer</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        // Navbar Background Change on Scroll
         $(window).scroll(function() {
             if ($(window).scrollTop() > 50) {
                 $('.navbar').addClass('scrolled');
@@ -204,27 +268,34 @@
                 $('.navbar').removeClass('scrolled');
             }
         });
-    </script>
-    <script>
+
         // Handle page transitions with fade-out and fade-in effect
         function handlePageTransition(event, targetPage) {
             event.preventDefault();  // Prevent immediate navigation
-    
+
             // Add fade-out class to body
             document.body.classList.add('fade-out');
-    
+
             // Wait for the fade-out to complete (500ms) before navigating
             setTimeout(function() {
-                // Add a load event listener for the next page
                 window.location.href = targetPage;  // Navigate to the next page
             }, 500);  // Match this duration with the fade-out transition time
         }
-    
-        // Ensure the fade-in effect is applied when the page is loaded
+
+        // Apply fade-in effect on page load
         window.addEventListener('load', function () {
-            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
-            document.body.classList.add('fade-in');  // Apply fade-in effect
-        });
+            document.body.classList.add('fade-in');
+        });
+
+        // Attach the handlePageTransition to all internal links
+        document.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href.startsWith('http') === false) { // Only handle internal links
+                    handlePageTransition(e, href);
+                }
+            });
+        });
     </script>
 </body>
 </html>
