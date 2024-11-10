@@ -147,16 +147,17 @@
         }
         /* CSS for fade-in and fade-out transitions */
         body {
-        opacity: 1;
-        transition: opacity 0.8s ease-in-out;
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out;
         }
 
         body.fade-out {
-        opacity: 0;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out; /* Match this with JS timeout */
         }
 
         body.fade-in {
-        opacity: 1;
+            opacity: 1;
         }
     </style>
 </head>
@@ -251,6 +252,47 @@
             }
         });
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+        // Initial fade-in effect when the page loads
+        requestAnimationFrame(() => {
+            document.body.classList.add("fade-in");
+        });
     
+        // Apply fade-out on link clicks
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+    
+                // Ensure it’s an internal link and not a hash
+                if (href && href.indexOf('#') === -1) {
+                    e.preventDefault(); // Prevent default navigation
+    
+                    // Trigger fade-out transition
+                    document.body.classList.remove("fade-in");
+                    document.body.classList.add("fade-out");
+    
+                    // Delay the navigation until after the fade-out
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 800); // Match 800ms with CSS transition duration
+                }
+            });
+        });
+    
+        // Remove fade-in class after page load to avoid refresh animation
+        window.addEventListener("load", () => {
+            document.body.classList.remove("fade-in");
+        });
+    
+        // Handle back/forward navigation with caching
+        window.addEventListener("pageshow", (event) => {
+            if (event.persisted) {
+                document.body.classList.remove("fade-out");
+                document.body.classList.add("fade-in");
+            }
+        });
+    });
+    </script>
 </body>
 </html>
