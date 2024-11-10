@@ -191,16 +191,18 @@
         .footer i:hover {
             color: #626947; /* Matches navbar hover color */
         }
-        /* Initial fade-in effect on page load */
-        .fade-in {
-            opacity: 1;
-            transition: opacity 0.8s ease-in;
+       /* CSS for fade-in and fade-out transitions */
+       body {
+        opacity: 1;
+        transition: opacity 0.8s ease-in-out;
         }
 
-        /* Fade-out effect on link navigation */
-        .fade-out {
-            opacity: 0;
-            transition: opacity 0.8s ease-out;
+        body.fade-out {
+        opacity: 0;
+        }
+
+        body.fade-in {
+        opacity: 1;
         }
     </style>
 </head>
@@ -323,6 +325,9 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+        // Add initial fade-in effect when the page loads
+        document.body.classList.add("fade-in");
+    
         // Add event listener to each link
         document.querySelectorAll('a[href]').forEach(link => {
             link.addEventListener('click', (e) => {
@@ -347,7 +352,14 @@
         setTimeout(() => {
             document.body.classList.remove("fade-in");
         }, 100);
+    
+        // Handle back/forward button navigation
+        window.addEventListener("pageshow", () => {
+            // Trigger the fade-in effect when navigating back/forward
+            document.body.classList.remove("fade-out");
+            document.body.classList.add("fade-in");
         });
+    });
     </script>
 </body>
 </html>
