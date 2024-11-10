@@ -87,6 +87,24 @@
             object-fit: cover;
             margin-bottom: 5px;
         }
+        /* fade in & fade out */
+        body {
+            opacity: 0;  /* Initially hide the body */
+            transform: translateY(1px);  /* Start position  */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+        }
+
+        /* Fade-in class for transition */
+        .fade-in {
+            opacity: 1;  /* Fully visible */
+            transform: translateY(0);  /* Move to the original position */
+        }
+
+        /* Fade-out class for transition */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(1px);  /* Slightly move down during fade-out */
+        }
     </style>
 </head>
 <body>
