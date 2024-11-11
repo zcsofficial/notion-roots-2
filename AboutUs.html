@@ -10,7 +10,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Century+Gothic&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset and Basic Styling */
         * {
             margin: 0;
             padding: 0;
@@ -19,47 +18,37 @@
         }
         body {
             font-family: 'Century Gothic', sans-serif;
-            opacity: 0;  /* Initially hide the body for fade-in effect */
-            transform: translateY(1px);  /* Start position */
-            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Fade-in transition */
+            opacity: 0;
+            transform: translateY(1px);
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;
         }
-        /* Fade-in class for transition */
         .fade-in {
-            opacity: 1;  /* Fully visible */
-            transform: translateY(0);  /* Original position */
+            opacity: 1;
+            transform: translateY(0);
         }
-        /* Fade-out class for transition */
         .fade-out {
             opacity: 0;
-            transform: translateY(1px);  /* Slightly move down during fade-out */
+            transform: translateY(1px);
         }
-
-        /* Navbar Items Styling */
         .navbar .navbar-nav .nav-link {
-            color: white;  /* Set the nav items to white color */
-            font-size: 1.1rem;  /* Adjust font size if needed */
-            font-weight: 400;  /* Adjust font weight for modern typography */
-            text-transform: uppercase;  /* Optionally, uppercase letters for a modern feel */
-            padding: 10px 15px;  /* Adjust padding to ensure the nav items are spaced well */
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            padding: 10px 15px;
         }
-
-        /* On hover, change the color to highlight the active item */
         .navbar .navbar-nav .nav-link:hover {
-            color: #aaa86b;  /* You can change this to any accent color (greenish tone) */
-            text-decoration: none;  /* Remove underline on hover */
+            color: #aaa86b;
+            text-decoration: none;
         }
-
-        /* Optional: Active item styling */
         .navbar .navbar-nav .nav-item.active .nav-link {
-            color: #aaa86b;  /* Highlight active item with the same accent color */
-            font-weight: bold;  /* Optionally, bold the active item */
+            color: #aaa86b;
+            font-weight: bold;
         }
         .navbar.scrolled {
-        background-color: #454343; /* Dark background for better readability */
-        transition: background-color 1s;
+            background-color: #454343;
+            transition: background-color 1s;
         }
-
-        /* Background Section Styling */
         .background-section {
             position: relative;
             min-height: 100vh;
@@ -72,123 +61,118 @@
             justify-content: center;
             color: #fff;
         }
-
         .background-section .overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
+            background-color: rgba(0, 0, 0, 0.5);
             z-index: 1;
         }
-
-        /* Content Container Styling */
         .content-container {
             position: relative;
-            z-index: 2; /* Above overlay */
+            z-index: 2;
             max-width: 1200px;
             width: 100%;
             padding: 20px;
         }
-
-        /* Card Group Styling */
         .card-group-custom {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             gap: 20px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
-
-        /* Individual Card Styling */
         .about-card {
-            background-color: rgba(69, 67, 67, 0.8); /* Transparent dark gray (#454343) */
+            background-color: rgba(69, 67, 67, 0.8);
             border-radius: 8px;
-            padding: 20px;
+            padding: 25px;
             color: white;
             width: 100%;
-            max-width: 350px;
+            max-width: 400px;
             text-align: center;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
             transition: transform 0.3s ease;
             position: relative;
             overflow: hidden;
         }
-
         .about-card:hover {
             transform: scale(1.05);
         }
-
         .about-card img {
             border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .team-member img {
             width: 100px;
             height: 100px;
-            object-fit: cover;
-            margin-bottom: 15px;
-        }
-
-        /* Team Grid Styling within Our Team Card */
-        .team-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-
-        .team-member {
-            text-align: center;
-            width: 45%;
-        }
-
-        .team-member img {
-            width: 60px;
-            height: 60px;
             object-fit: cover;
             border-radius: 50%;
             margin-bottom: 10px;
         }
-
-        .team-member p {
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
         .about-card h3, .about-card h2 {
             font-family: 'Century Gothic', sans-serif;
             color: white;
             margin-bottom: 15px;
         }
-
         .about-card p {
             font-family: 'Roboto', sans-serif;
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
+        /* Team Grid Layout: two per row */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .team-member {
+            width: 45%;  /* Adjust width to make two per row */
+            text-align: center;
+        }
+
         /* Responsive Adjustments */
         @media (max-width: 992px) {
             .card-group-custom {
+                flex-wrap: wrap;
                 justify-content: center;
             }
         }
-
         @media (max-width: 768px) {
             .about-card {
-                max-width: 100%;
+                max-width: 90%;
+            }
+            .team-member {
+                width: 100%;  /* Stack team members on smaller screens */
             }
         }
+        /* fade in & fade out */
+       body {
+            opacity: 0;  /* Initially hide the body */
+            transform: translateY(1px);  /* Start position  */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+        }
 
-        @media (max-width: 576px) {
-            .team-member {
-                width: 100%;
-            }
+        /* Fade-in class for transition */
+        .fade-in {
+            opacity: 1;  /* Fully visible */
+            transform: translateY(0);  /* Move to the original position */
+        }
+
+        /* Fade-out class for transition */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(1px);  /* Slightly move down during fade-out */
         }
     </style>
 </head>
 <body>
-    <!-- Navbar -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="index.html">
@@ -199,54 +183,50 @@
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                        <li class="nav-item active"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
-                        <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- About Us Section -->
     <section class="background-section">
-        <div class="overlay"></div> <!-- Dark overlay -->
+        <div class="overlay"></div>
         <div class="content-container">
             <h2 class="text-center mb-5" style="color: white;">About Us</h2>
             <div class="card-group-custom">
-                <!-- Founder Card -->
                 <div class="about-card">
-                    <img src="https://via.placeholder.com/150" alt="Founder Image">
                     <h3>Founder</h3>
+                    <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1721666531/samples/people/smiling-man.jpg" alt="Founder Image">
                     <p><strong>John Doe</strong><br>Founder & CEO</p>
                     <p>With a vision for sustainable architecture, John Doe leads Notion ROOTS to redefine eco-friendly designs in urban spaces.</p>
                 </div>
 
-                <!-- About Us Card -->
                 <div class="about-card">
-                    <h2>About Us</h2>
+                    <h2>Our Story</h2>
                     <p>At <strong>Notion ROOTS</strong>, we specialize in sustainable architectural designs that harmonize with the environment. Founded by a team of passionate architects, we blend cutting-edge technology with nature-conscious materials for lasting impact.</p>
                 </div>
 
-                <!-- Our Team Card -->
                 <div class="about-card">
                     <h3>Our Team</h3>
                     <div class="team-grid">
                         <div class="team-member">
-                            <img src="https://via.placeholder.com/80" alt="Jane Smith">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1721666531/samples/people/smiling-man.jpg" alt="Jane Smith">
                             <p><strong>Jane Smith</strong><br>Lead Architect</p>
                         </div>
                         <div class="team-member">
-                            <img src="https://via.placeholder.com/80" alt="Sam Brown">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1721666531/samples/people/smiling-man.jpg" alt="Sam Brown">
                             <p><strong>Sam Brown</strong><br>Project Manager</p>
                         </div>
                         <div class="team-member">
-                            <img src="https://via.placeholder.com/80" alt="Alex Lee">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1721666531/samples/people/smiling-man.jpg" alt="Alex Lee">
                             <p><strong>Alex Lee</strong><br>Interior Designer</p>
                         </div>
                         <div class="team-member">
-                            <img src="https://via.placeholder.com/80" alt="Emily White">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1721666531/samples/people/smiling-man.jpg" alt="Emily White">
                             <p><strong>Emily White</strong><br>Structural Engineer</p>
                         </div>
                     </div>
@@ -255,47 +235,41 @@
         </div>
     </section>
 
-    <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Navbar Background Change on Scroll
-        $(window).scroll(function() {
-            if ($(window).scrollTop() > 50) {
-                $('.navbar').addClass('scrolled');
-            } else {
-                $('.navbar').removeClass('scrolled');
-            }
-        });
-
-        // Handle page transitions with fade-out and fade-in effect
-        function handlePageTransition(event, targetPage) {
-            event.preventDefault();  // Prevent immediate navigation
-
-            // Add fade-out class to body
-            document.body.classList.add('fade-out');
-
-            // Wait for the fade-out to complete (500ms) before navigating
-            setTimeout(function() {
-                window.location.href = targetPage;  // Navigate to the next page
-            }, 500);  // Match this duration with the fade-out transition time
-        }
-
-        // Apply fade-in effect on page load
-        window.addEventListener('load', function () {
-            document.body.classList.add('fade-in');
-        });
-
-        // Attach the handlePageTransition to all internal links
-        document.querySelectorAll('a').forEach(function (link) {
-            link.addEventListener('click', function (e) {
-                const href = this.getAttribute('href');
-                if (href && href.startsWith('http') === false) { // Only handle internal links
-                    handlePageTransition(e, href);
+        $(document).ready(function () {
+            $('body').addClass('fade-in');
+            $(window).scroll(function () {
+                if ($(this).scrollTop() > 100) {
+                    $('.navbar').addClass('scrolled');
+                } else {
+                    $('.navbar').removeClass('scrolled');
                 }
             });
         });
+    </script>
+    <script>
+        // Handle page transitions with fade-out and fade-in effect
+        function handlePageTransition(event, targetPage) {
+            event.preventDefault();  // Prevent immediate navigation
+    
+            // Add fade-out class to body
+            document.body.classList.add('fade-out');
+    
+            // Wait for the fade-out to complete (500ms) before navigating
+            setTimeout(function() {
+                // Add a load event listener for the next page
+                window.location.href = targetPage;  // Navigate to the next page
+            }, 500);  // Match this duration with the fade-out transition time
+        }
+    
+        // Ensure the fade-in effect is applied when the page is loaded
+        window.addEventListener('load', function () {
+            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
+            document.body.classList.add('fade-in');  // Apply fade-in effect
+        });
     </script>
 </body>
 </html>
