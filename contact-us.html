@@ -247,6 +247,27 @@
             text-align: left;
             color: #ffffff; /* Label color for dark background */
         }
+        /* Styling for the expandable form trigger */
+        .expand-form-trigger {
+            cursor: pointer;
+            font-size: 1.1rem;
+            color: #aaa86b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .expand-form-trigger:hover {
+            color: #fff; /* Change color on hover */
+        }
+
+        #expandIcon {
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
 
         /* Focus effect */
         .form-group input:focus, .form-group textarea:focus {
@@ -299,13 +320,13 @@
     <div class="overlay"></div>
     <!-- Header Section with Contact Info and Map -->
     <header class="header-section">
-        <h1 style="font-size: 1.1rem;">CONTACT US</h1>
+        <h1>Contact Us</h1>
         <div class="text-center contact-info">
             <p class="contact-info"><i class="fas fa-phone-alt"></i> +91 1234567890</p>
             <p class="contact-info"><i class="fas fa-envelope"></i> Info.NotionRoots@example.com</p>
         </div>
         <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=..." width="100%" height="200" allowfullscreen loading="lazy"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15711.552937132363!2d76.3693174!3d10.1082338!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0809d5db889d4d%3A0x59ef36c6683bb621!2sNotion%20ROOTS!5e0!3m2!1sen!2sin!4v1731347323747!5m2!1sen!2sin" width="100%" height="200" allowfullscreen loading="lazy"></iframe>
         </div>
     </header>
 
@@ -333,23 +354,29 @@
         
         <!-- Contact Form Container -->
         <div class="col-md-6 mb-3">
-            <div class="info-box text-center"> <!-- Added info-box to match styles -->
-                <div class="location-details mb-4 mt-3">
+            <div class="contact-container text-center">
+                <div class="location-details mb-4 mt-5">
                     <h4>Get in Touch With Us</h4>
                     <p>By filling out this form</p>
                 </div>
-                <button id="openFormButton" class="expand-button mb-4 mt-4">Open Contact Form</button>
+                
+                <!-- Expandable form trigger with icon -->
+                <div id="expandFormTrigger" class="expand-form-trigger mb-4 mt-4">
+                    <span id="expandText">Open Contact Form</span>
+                    <span id="expandIcon">+</span>
+                </div>
+        
                 <!-- Contact form -->
                 <form id="contactForm" class="contact-form">
                     <label for="name">Name</label>
                     <input type="text" id="name" placeholder="Your name" required>
-
+        
                     <label for="email">Email</label>
                     <input type="email" id="email" placeholder="Your email" required>
-
+        
                     <label for="message">Message</label>
                     <textarea id="message" placeholder="Your message" required></textarea>
-
+        
                     <button type="submit" class="submit-button w-100">Submit</button>
                 </form>
             </div>
@@ -404,35 +431,40 @@
             });
         </script>
         <script>
-    document.getElementById('openFormButton').addEventListener('click', function () {
-        const form = document.getElementById('contactForm');
-        form.classList.toggle('expanded');
+            document.getElementById('openFormButton').addEventListener('click', function () {
+                const form = document.getElementById('contactForm');
+                form.classList.toggle('expanded');
 
-        // Toggle button text between "Open" and "Close"
-        this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
+                // Toggle button text between "Open" and "Close"
+                this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
 
-        // Scroll to the form when it is expanded
-        if (form.classList.contains('expanded')) {
-            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById('openFormButton').addEventListener('click', function () {
+                // Scroll to the form when it is expanded
+                if (form.classList.contains('expanded')) {
+                    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        </script>
+        <script>
+            document.getElementById('expandFormTrigger').addEventListener('click', function () {
             const form = document.getElementById('contactForm');
+            const expandText = document.getElementById('expandText');
+            const expandIcon = document.getElementById('expandIcon');
+
+            // Toggle the 'expanded' class on the form to show/hide it
             form.classList.toggle('expanded');
 
-            // Toggle button text between "Open" and "Close"
-            this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
-
-            // Scroll to the form when it is expanded
+            // Update text and icon based on whether the form is expanded
             if (form.classList.contains('expanded')) {
+                expandText.textContent = 'Close Contact Form';
+                expandIcon.textContent = '−';
                 form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else {
+                expandText.textContent = 'Open Contact Form';
+                expandIcon.textContent = '+';
             }
         });
-    });
-</script>
+
+        </script>
 
 </body>
 </html>
