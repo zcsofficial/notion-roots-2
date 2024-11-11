@@ -115,7 +115,7 @@
         /* Social Media Icons Styling */
         .social-icons {
             display: flex;
-            justify-content: start; /* Align to the start (left) */
+            justify-content: center; /* Align to the start (left) */
             gap: 15px; /* Space between icons */
             margin-top: 10px;
         }
@@ -141,7 +141,7 @@
             line-height: 1.4;
         }
         .info-box button {
-            background-color: #707070;
+            background-color: #aaa86b;
             color: white;
             font-size: 1rem;
             padding: 10px;
@@ -152,25 +152,6 @@
         }
         .info-box button:hover {
             background-color: #454343;
-        }
-
-        /* Modal Styles */
-        .modal-content {
-            background-color: rgba(0, 0, 0, 0.6); /* Dark background with 60% opacity */
-            color: white; /* Ensure text is visible on the dark background */
-            border-radius: 8px;
-            padding: 20px;
-            backdrop-filter: blur(10px); /* Apply blur effect */
-            -webkit-backdrop-filter: blur(10px); /* For Safari */
-        }
-
-
-        .modal-header {
-            border-bottom: none;
-        }
-
-        .modal-footer {
-            border-top: none;
         }
 
         /* Responsive adjustments */
@@ -185,64 +166,85 @@
                 font-size: 0.85rem;
             }
         }
-        /* Contact Form Styling */
-        .contact-form-container {
-            background-color: rgba(255, 255, 255, 0.9); /* White with 90% opacity */
-            padding: 50px 20px;
-            border-radius: 12px;
-            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .contact-form-container h3 {
-            color: black;
-            margin-bottom: 20px;
-            font-size: 2rem;
-            font-weight: 600;
-        }
-
-        .contact-form .form-control {
-            margin-bottom: 15px;
+        /* Container styling */
+        .contact-container {
+            
+            width: 100%;
+            background-color: rgba(69, 67, 67, 0.8); /* Transparent dark gray */
+            padding: 20px;
             border-radius: 8px;
-            border: 1px solid #ddd;
-            padding: 12px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #ffffff; /* Text color for dark background */
+            z-index: 2; /* Keep the header content above the overlay */
         }
 
-        /* Hover effect for inputs */
-        .contact-form .form-control:hover {
-            border-color: #aaa86b;
-            box-shadow: 0 0 8px rgba(170, 168, 107, 0.5);
-        }
-
-        .contact-form .form-control:focus {
-            border-color: #aaa86b;
-            box-shadow: 0 0 5px rgba(170, 168, 107, 0.5);
-        }
-
-        .contact-form .form-control::placeholder {
-            color: #888;
+        /* Location details section */
+        .location-details {
+            margin-bottom: 15px;
         }
 
         /* Button styling */
-        .contact-form button {
-            width: 100%;
-            background-color: #707070;
-            color: #fff;
-            padding: 12px;
+        .expand-button,
+        .contact-form button[type="submit"] {
+            width: 75%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            background-color: #aaa86b; /* Updated button color */
+            color: white;
             border: none;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        /* Button hover effect */
-        .contact-form button:hover {
+        /* Hover effect for buttons */
+        .expand-button:hover,
+        .contact-form button[type="submit"]:hover {
             background-color: #454343;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Contact form initial state */
+        .contact-form {
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+            transition: max-height 0.5s ease, opacity 0.5s ease;
+            visibility: hidden;
+            margin-top: 15px; /* Added margin between button and form */
+        }
+
+        /* Contact form expanded state */
+        .contact-form.expanded {
+            max-height: 500px; /* Adjust based on form height */
+            opacity: 1;
+            visibility: visible;
+            background-color: rgba(69, 67, 67, 0.8); /* Transparent dark gray for the form background */
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        /* Input fields */
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            background-color: #f4f4f4;
+            color: #000; /* Dark text for inputs */
+        }
+
+        /* Labels */
+        .contact-form label {
+            margin-top: 10px;
+            font-weight: bold;
+            display: block;
+            text-align: left;
+            color: #ffffff; /* Label color for dark background */
         }
 
         /* Focus effect */
@@ -307,69 +309,53 @@
     </header>
 
     <!-- Two-Column Information Section -->
-    <section class="info-container container">
-        <div class="row">
-            <!-- Office Details -->
-            <div class="col-md-6 mb-3">
-                <div class="info-box">
-                    <h4>Office Details</h4>
-                    <p>Notion ROOTS Office</p>
-                    <p>KOCHI, ALUVA, KERALA, India</p>
-                    <p>Phone: +91 1234567890</p>
-                    <p>Email: Info.NotionRoots@example.com</p>
-                    <!-- Social Media Icons -->
-                    <div class="social-icons mt-3">
-                        <a href="https://www.facebook.com" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.twitter.com" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-            <!-- Location Details with Button to Open Form -->
-            <div class="col-md-6 mb-3">
-                <div class="info-box">
-                    <h4>Location Details</h4>
-                    <p>We are located in the heart of Kochi, Kerala, easily accessible by public and private transport.</p>
-                    <p>Find us near key landmarks and enjoy the vibrant culture of the area.</p>
-                    <!-- Button to open modal -->
-                    <button data-toggle="modal" data-target="#contactFormModal">Open Contact Form</button>
+    <!-- Two-Column Information Section -->
+<section class="info-container container">
+    <div class="row">
+        <!-- Office Details -->
+        <div class="col-md-6 mb-3">
+            <div class="info-box text-center">
+                <h4>Office Details</h4>
+                <p>Notion ROOTS Office</p>
+                <p>KOCHI, ALUVA, KERALA, India</p>
+                <p>Phone: +91 1234567890</p>
+                <p>Email: Info.NotionRoots@example.com</p>
+                <!-- Social Media Icons -->
+                <div class="social-icons mt-3">
+                    <a href="https://www.facebook.com/notion.roots/" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon -->
+                    <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/notion-roots-architecture-interiors-and-build-29aa89212/" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
-    </section>
+        
+        <!-- Contact Form Container -->
+        <div class="col-md-6 mb-3">
+            <div class="info-box text-center"> <!-- Added info-box to match styles -->
+                <div class="location-details mb-4 mt-3">
+                    <h4>Get in Touch With Us</h4>
+                    <p>By filling out this form</p>
+                </div>
+                <button id="openFormButton" class="expand-button mb-4 mt-4">Open Contact Form</button>
+                <!-- Contact form -->
+                <form id="contactForm" class="contact-form">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your name" required>
 
-    <!-- Modal for Contact Form -->
-    <div class="modal fade" id="contactFormModal" tabindex="-1" role="dialog" aria-labelledby="contactFormModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="contactFormModalLabel">Contact Us</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Contact Form -->
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control" id="message" rows="4" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Submit</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Your email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" placeholder="Your message" required></textarea>
+
+                    <button type="submit">Submit</button>
+                </form>
             </div>
         </div>
     </div>
+</section>
+
 </div>
 
     <!-- JavaScript -->
@@ -406,5 +392,46 @@
             document.body.classList.add('fade-in');  // Apply fade-in effect
         });
     </script>
+    <!-- JavaScript for form toggle functionality -->
+        <script>
+            document.getElementById('openFormButton').addEventListener('click', function () {
+                const form = document.getElementById('contactForm');
+                form.classList.toggle('expanded');
+
+                // Toggle button text between "Open" and "Close"
+                this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
+            });
+        </script>
+        <script>
+    document.getElementById('openFormButton').addEventListener('click', function () {
+        const form = document.getElementById('contactForm');
+        form.classList.toggle('expanded');
+
+        // Toggle button text between "Open" and "Close"
+        this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
+
+        // Scroll to the form when it is expanded
+        if (form.classList.contains('expanded')) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById('openFormButton').addEventListener('click', function () {
+            const form = document.getElementById('contactForm');
+            form.classList.toggle('expanded');
+
+            // Toggle button text between "Open" and "Close"
+            this.textContent = form.classList.contains('expanded') ? 'Close Contact Form' : 'Open Contact Form';
+
+            // Scroll to the form when it is expanded
+            if (form.classList.contains('expanded')) {
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    });
+</script>
+
 </body>
 </html>
