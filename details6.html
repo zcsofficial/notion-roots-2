@@ -90,6 +90,24 @@
         .gallery img:hover {
             transform: scale(1.1); /* Slightly larger hover effect */
         }
+        /* fade in & fade out */
+        body {
+            opacity: 0;  /* Initially hide the body */
+            transform: translateY(1px);  /* Start position  */
+            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+        }
+
+        /* Fade-in class for transition */
+        .fade-in {
+            opacity: 1;  /* Fully visible */
+            transform: translateY(0);  /* Move to the original position */
+        }
+
+        /* Fade-out class for transition */
+        .fade-out {
+            opacity: 0;
+            transform: translateY(1px);  /* Slightly move down during fade-out */
+        }
     </style>
 </head>
 <body>
@@ -138,5 +156,35 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 50) {
+                $('nav').addClass('scrolled');
+            } else {
+                $('nav').removeClass('scrolled');
+            }
+        });
+    </script>
+    <script>
+        // Handle page transitions with fade-out and fade-in effect
+        function handlePageTransition(event, targetPage) {
+            event.preventDefault();  // Prevent immediate navigation
+    
+            // Add fade-out class to body
+            document.body.classList.add('fade-out');
+    
+            // Wait for the fade-out to complete (500ms) before navigating
+            setTimeout(function() {
+                // Add a load event listener for the next page
+                window.location.href = targetPage;  // Navigate to the next page
+            }, 500);  // Match this duration with the fade-out transition time
+        }
+    
+        // Ensure the fade-in effect is applied when the page is loaded
+        window.addEventListener('load', function () {
+            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
+            document.body.classList.add('fade-in');  // Apply fade-in effect
+        });
+    </script>
 </body>
 </html>

@@ -10,8 +10,35 @@
     <style>
         body {
             font-family: 'Century Gothic', sans-serif;
-        }   
-        /* Custom navbar styles */
+            position: relative;
+            background-image: url("https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730907626/fww5uxsdau4znk8nwiok.jpg");
+            background-size: cover;
+            background-attachment: fixed;
+            color: white;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        /* Dark overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
+            z-index: 1;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: transparent;
+        }
+
+        /* Navbar Items Styling */
         .navbar .navbar-nav .nav-link {
             color: white;  /* Set the nav items to white color */
             font-size: 1.1rem;  /* Adjust font size if needed */
@@ -31,13 +58,9 @@
             color: #aaa86b;  /* Highlight active item with the same accent color */
             font-weight: bold;  /* Optionally, bold the active item */
         }
-
         .navbar.scrolled {
-            background-color: #454343; /* Dark background for better readability */
-            transition: background-color 1s;
-        }
-        .navbar-toggler-icon {
-            color: white; /* Or use your preferred color */
+        background-color: #454343; /* Dark background for better readability */
+        transition: background-color 1s;
         }
 
         /* Set html, body to full height */
@@ -48,28 +71,7 @@
             overflow-x: hidden;
         }
 
-        /* Background Image and Overlay */
-        body {
-            position: relative;
-            background-image: url("https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730907626/fww5uxsdau4znk8nwiok.jpg");
-            background-size: cover;
-            background-attachment: fixed;
-            color: white;
-        }
-
-        /* Dark overlay on background */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with 50% opacity */
-            z-index: 1;
-        }
-
-        /* Ensure all content is above the overlay */
+        /* Content container styles */
         .content {
             position: relative;
             z-index: 2;
@@ -113,52 +115,55 @@
             font-size: 0.9rem;
             margin: 0;
         }
-        /* fade in & fade out */
-        body {
-            opacity: 0;  /* Initially hide the body */
-            transform: translateY(1px);  /* Start position  */
-            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+
+        /* White fade-overlay */
+        .fade-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 3;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
         }
 
-        /* Fade-in class for transition */
-        .fade-in {
-            opacity: 1;  /* Fully visible */
-            transform: translateY(0);  /* Move to the original position */
-        }
-
-        /* Fade-out class for transition */
+        /* Fade-out class */
         .fade-out {
             opacity: 0;
-            transform: translateY(1px);  /* Slightly move down during fade-out */
         }
     </style>
 </head>
 <body>
 
+    <!-- White Fade Overlay -->
+    <div class="fade-overlay"></div>
+
     <!-- Navbar -->
-    <header class="content">
+    <header>
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="index.html">
                 <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730992852/vcmtxi5ht6gsxh4hoiv3.png" height="50" width="100%" alt="Notion Roots Logo"/>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Awards</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="#">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="awards.html">Awards</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
                 </ul>
             </div>
         </nav>
-    </header>
+        </header>
 
     <!-- Card Container -->
     <section class="card-container container content">
-        <h1 class="text-center mb-5 mt-2" style="font-size: 1.1rem;">SPORTS PROJECTS</h1>
+        <h1 class="text-center mb-5 mt-2" style="font-size: 1.1rem;">RESIDENTIAL PROJECTS</h1>
         <div class="row">
             <!-- Card 1 -->
             <a href="details1.html" class="col-12 col-md-4 mb-4">
@@ -229,32 +234,18 @@
     <script>
         $(window).scroll(function() {
             if ($(this).scrollTop() > 50) {
-                $('.navbar').addClass('scrolled');
+                $('nav').addClass('scrolled');
             } else {
-                $('.navbar').removeClass('scrolled');
+                $('nav').removeClass('scrolled');
             }
         });
     </script>
     <script>
-        // Handle page transitions with fade-out and fade-in effect
-        function handlePageTransition(event, targetPage) {
-            event.preventDefault();  // Prevent immediate navigation
-    
-            // Add fade-out class to body
-            document.body.classList.add('fade-out');
-    
-            // Wait for the fade-out to complete (500ms) before navigating
-            setTimeout(function() {
-                // Add a load event listener for the next page
-                window.location.href = targetPage;  // Navigate to the next page
-            }, 500);  // Match this duration with the fade-out transition time
-        }
-    
-        // Ensure the fade-in effect is applied when the page is loaded
+        // Ensure the white fade-out transition happens once the page is loaded
         window.addEventListener('load', function () {
-            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
-            document.body.classList.add('fade-in');  // Apply fade-in effect
-        });
+            const fadeOverlay = document.querySelector('.fade-overlay');
+            fadeOverlay.classList.add('fade-out');  // Add fade-out class to fade out the white overlay
+        });
     </script>
 </body>
 </html>
