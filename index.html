@@ -10,7 +10,10 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
 
     <style>
-       .navbar .navbar-nav .nav-link {
+        body{
+            font-family: 'century gothic', sans-serif;
+        }
+        .navbar .navbar-nav .nav-link {
             color: white;  /* Set the nav items to white color */
             font-size: 1.1rem;  /* Adjust font size if needed */
             font-weight: 400;  /* Adjust font weight for modern typography */
@@ -39,36 +42,6 @@
             list-style: none;
             display: flex;
         }
-        /* Custom Navbar Background Color */
-        .bg-custom {
-            background-color: transparent; /* Replace with the desired theme color */
-        }
-
-        .navbar-brand {
-            color: #618a6c;
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-
-        .navbar-nav .nav-link {
-            color: #333;
-            margin-right: 0px;
-        }
-
-        /* Hover effect for nav links */
-        .navbar-nav .nav-link:hover {
-            color: #618a6c;
-        }
-
-        /* Ensure the navbar fills the full width */
-        .navbar {
-            width: 100%;
-        }
-
-        .navbar.scrolled {
-        background-color: #454343; /* Dark background for better readability */
-        transition: background-color 1s;
-        }
 
         /* Hero Carousel Styling */
         .hero-carousel {
@@ -79,6 +52,7 @@
         .swiper-container {
             width: 100%;
             height: 100vh;
+            cursor: grab; /* Set the default cursor to 'grab' */
         }
         .swiper-slide img {
             width: 100%;
@@ -126,6 +100,20 @@
         }
         .swiper-pagination-bullet-active {
             transform: scale(1.2);
+        }
+
+        /* Navigation Controls Styling */
+        .swiper-button-prev, .swiper-button-next {
+            color: #ffffff;
+            width: 45px;
+            height: 45px;
+            background: transparent
+        }
+        .swiper-button-prev:hover, .swiper-button-next:hover {
+            cursor: pointer; /* Pointer cursor on hover */
+        }
+        .swiper-button-prev::after, .swiper-button-next::after {
+            font-size: 20px;
         }
 
         /* Responsive Adjustments */
@@ -213,6 +201,9 @@
             </div>
             <!-- Swiper Pagination -->
             <div class="swiper-pagination"></div>
+            <!-- Swiper Navigation Controls -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
     </section>
 
@@ -238,15 +229,26 @@
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
             autoplay: {
                 delay: 5000,
                 disableOnInteraction: false,
             },
             speed: 1000,
-            effect: 'fade',
-            fadeEffect: {
-                crossFade: true
-            },
+            effect: 'slide',  // Keep sliding effect
+            on: {
+                touchStart: function() {
+                    // Change the cursor to 'grabbing' when dragging starts
+                    this.el.style.cursor = 'grabbing';
+                },
+                touchEnd: function() {
+                    // Change the cursor back to 'grab' when dragging ends
+                    this.el.style.cursor = 'grab';
+                }
+            }
         });
     </script>
     <script>
