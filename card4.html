@@ -33,11 +33,6 @@
             z-index: 1;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            background-color: transparent;
-        }
-
         /* Navbar Items Styling */
         .navbar .navbar-nav .nav-link {
             color: white;  /* Set the nav items to white color */
@@ -141,25 +136,25 @@
     <div class="fade-overlay"></div>
 
     <!-- Navbar -->
-    <header>
+    <header class="content">
         <nav class="navbar navbar-expand-lg navbar-light fixed-top">
             <a class="navbar-brand" href="index.html">
                 <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730992852/vcmtxi5ht6gsxh4hoiv3.png" height="50" width="100%" alt="Notion Roots Logo"/>
             </a>
-            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="project.html">Projects</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="awards.html">Awards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Awards</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="#">Contact</a></li>
                 </ul>
             </div>
         </nav>
-        </header>
+    </header>
 
     <!-- Card Container -->
     <section class="card-container container content">
@@ -217,10 +212,10 @@
 
             <!-- Card 6 -->
             <a href="details6.html" class="col-12 col-md-4 mb-4">
-                <div class="card" style="background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730991125/bqpa2y7qjhhxl61o7lva.jpg');">
+                <div class="card" style="background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003230/notion%20roots/ezdqr2wwe32psur1g9lh.jpg');">
                     <div class="card-content">
-                        <h5>Mountain Retreat</h5>
-                        <p>Luxurious living with breathtaking mountain views.</p>
+                        <h5>Sunset Heights</h5>
+                        <p>Stunning high-rise with breathtaking sunset views.</p>
                     </div>
                 </div>
             </a>
@@ -245,6 +240,11 @@
         window.addEventListener('load', function () {
             const fadeOverlay = document.querySelector('.fade-overlay');
             fadeOverlay.classList.add('fade-out');  // Add fade-out class to fade out the white overlay
+            
+            // After fade-out, reset z-index to allow interactions
+            setTimeout(function() {
+                fadeOverlay.style.zIndex = "-1";  // Allow interaction with underlying elements
+            }, 2000);  // Match this delay with fade-out duration
         });
     </script>
 </body>
