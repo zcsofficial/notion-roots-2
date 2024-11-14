@@ -3,110 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Details - Notion Roots</title>
-    <!-- Bootstrap CSS -->
+    <title>Residential Project - Eco Villa</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Ensure the body and html stretch to full height */
-        html, body {
-            height: 100%;
-            margin: 0;
+        /* Fade-in Effect */
+        body {
+            font-family: 'century gothic', sans-serif;
+            opacity: 0; /* Initial state */
+            transition: opacity 1.5s ease-in-out; /* Smooth fade-in effect */
         }
 
-        /* Background with overlay */
-        body {
-            background-image: url("https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg"); /* Set one of the images as the background */
+        /* Fading navbar styling */
+        .navbar {
+            transition: background-color 0.5s ease;
+        }
+        .navbar.scrolled {
+            background-color: #454343
+        }
+        .navbar .navbar-nav .nav-link {
+            color: white;
+        }
+        .navbar .navbar-nav .nav-link:hover,
+        .navbar .navbar-nav .nav-item.active .nav-link {
+            color: #aaa86b;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            position: relative;
+            background-image: url("https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg");
             background-size: cover;
             background-attachment: fixed;
-            color: #333;
-            position: relative;
-            z-index: 1;
-            padding-top: 60px; /* Add padding to avoid content being hidden behind the navbar */
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
         }
-
-        /* Full page overlay */
-        body::before {
+        .hero::before {
             content: "";
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7); /* Dark overlay with more opacity */
-            z-index: -1;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1;
+        }
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+        /* Content Sections */
+        .content-section {
+            padding: 50px 0;
+        }
+        .content-section img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
 
-        .navbar .navbar-nav .nav-link {
-            color: white;  /* Set the nav items to white color */
-            font-size: 1.1rem;  /* Adjust font size if needed */
-            font-weight: 400;  /* Adjust font weight for modern typography */
-            text-transform: uppercase;  /* Optionally, uppercase letters for a modern feel */
-            padding: 10px 15px;  /* Adjust padding to ensure the nav items are spaced well */
-        }
-
-        /* On hover, change the color to highlight the active item */
-        .navbar .navbar-nav .nav-link:hover {
-            color: #aaa86b;  /* You can change this to any accent color (greenish tone) */
-            text-decoration: none;  /* Remove underline on hover */
-        }
-
-        /* Optional: Active item styling */
-        .navbar .navbar-nav .nav-item.active .nav-link {
-            color: #aaa86b;  /* Highlight active item with the same accent color */
-            font-weight: bold;  /* Optionally, bold the active item */
-        }
-
-        .navbar.scrolled {
-            background-color: #454343; /* Dark background for better readability */
-            transition: background-color 1s;
-        }
-        
-        .navbar-toggler-icon {
-            color: white; /* Or use your preferred color */
-        }
-
-        .container {
-           x;
-            color: #fff;
-        }
-
-        /* Gallery Styles */
+        /* Gallery Section */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Enlarge image size */
-            gap: 20px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            padding: 20px 0;
         }
-
         .gallery img {
             width: 100%;
-            height: 30vh;
+            height: 25vh;
             border-radius: 8px;
             transition: transform 0.3s;
-            max-height: 400px; /* Limit height for larger images */
         }
-
         .gallery img:hover {
-            transform: scale(1.1); /* Slightly larger hover effect */
-        }
-        /* fade in & fade out */
-        body {
-            opacity: 0;  /* Initially hide the body */
-            transform: translateY(1px);  /* Start position  */
-            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
-        }
-
-        /* Fade-in class for transition */
-        .fade-in {
-            opacity: 1;  /* Fully visible */
-            transform: translateY(0);  /* Move to the original position */
-        }
-
-        /* Fade-out class for transition */
-        .fade-out {
-            opacity: 0;
-            transform: translateY(1px);  /* Slightly move down during fade-out */
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -118,38 +93,48 @@
             <a class="navbar-brand" href="index.html">
                 <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730992852/vcmtxi5ht6gsxh4hoiv3.png" height="50" width="100%" alt="Notion Roots Logo"/>
             </a>
-            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler bg-light" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">About Us</a></li>
-                    <li class="nav-item active"><a class="nav-link" href="project.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="awards.html">Awards</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact-us.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                    <li class="nav-item"><a class="nav-link" href="AboutUs.html">ABOUT US</a></li>
+                    <li class="nav-item active"><a class="nav-link" href="project.html">PROJECT</a></li>
+                    <li class="nav-item"><a class="nav-link" href="awards.html">AWARDS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact-us.html">CONTACT</a></li>
                 </ul>
             </div>
         </nav>
     </header>
 
-    <!-- Project Details Section -->
-    <section class="container">
-        <h2 class="text-center mt-4">RESIDENTIAL PROJECT</h2>
-        <p class="text-center mb-5">MOUNTAIN RETREAT</p>
-
-       
-
-        <!-- Gallery Section -->
-        <div class="gallery mt-4">
-            <!-- Gallery Images -->
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg" alt="Project Image 1">
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069716/notion%20roots/curousals/gdkh5sar5gqsji0b2yao.jpg" alt="Project Image 2">
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069716/notion%20roots/curousals/ck4ju7ny6kctgpgh7tzf.jpg" alt="Project Image 3">
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730991125/bqpa2y7qjhhxl61o7lva.jpg" alt="Project Image 4">
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908396/akrlt9zz1h0jxgxlivay.jpg" alt="Project Image 5">
-            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg" alt="Project Image 6">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Residential Project: Eco Villa</h1>
+            <p>A showcase of our latest eco-friendly villa design</p>
         </div>
+    </section>
+
+    <!-- Project Details Section -->
+    <section class="content-section container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/gdkh5sar5gqsji0b2yao.jpg" alt="Project Interior">
+            </div>
+            <div class="col-md-6">
+                <h3>Project Overview</h3>
+                <p>Our Eco Villa project combines sustainability with luxury, utilizing green building techniques and materials to create a comfortable, eco-friendly living space...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="container gallery">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069716/notion%20roots/curousals/ck4ju7ny6kctgpgh7tzf.jpg" alt="Gallery Image 1">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730991125/bqpa2y7qjhhxl61o7lva.jpg" alt="Gallery Image 2">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908396/akrlt9zz1h0jxgxlivay.jpg" alt="Gallery Image 3">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg" alt="Gallery Image 4">
     </section>
 
     <!-- Bootstrap JS and dependencies -->
@@ -157,34 +142,19 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
+        // Fade-in effect on page load
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1'; // Trigger fade-in effect
+        });
+
+        // Add 'scrolled' class to navbar on scroll for fading effect
         $(window).scroll(function() {
             if ($(this).scrollTop() > 50) {
-                $('nav').addClass('scrolled');
+                $('.navbar').addClass('scrolled');
             } else {
-                $('nav').removeClass('scrolled');
+                $('.navbar').removeClass('scrolled');
             }
         });
-    </script>
-    <script>
-        // Handle page transitions with fade-out and fade-in effect
-        function handlePageTransition(event, targetPage) {
-            event.preventDefault();  // Prevent immediate navigation
-    
-            // Add fade-out class to body
-            document.body.classList.add('fade-out');
-    
-            // Wait for the fade-out to complete (500ms) before navigating
-            setTimeout(function() {
-                // Add a load event listener for the next page
-                window.location.href = targetPage;  // Navigate to the next page
-            }, 500);  // Match this duration with the fade-out transition time
-        }
-    
-        // Ensure the fade-in effect is applied when the page is loaded
-        window.addEventListener('load', function () {
-            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
-            document.body.classList.add('fade-in');  // Apply fade-in effect
-        });
     </script>
 </body>
 </html>
