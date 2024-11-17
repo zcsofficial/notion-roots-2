@@ -159,10 +159,10 @@
             bottom: 0;
             width: 100%;
             padding: 15px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Add gradient overlay */
             color: #fff;
             text-align: center;
-            z-index: 2; /* Ensures text is above the overlay */
-            
+            z-index: 2;
         }
 
 
@@ -172,9 +172,12 @@
 
         .project-card img {
             width: 100%;
-            height: 40vh;
+            height: auto; /* Maintain aspect ratio */
+            max-height: 250px; /* Set a maximum height for uniformity */
+            object-fit: cover; /* Ensure image covers the card area */
             border-radius: 8px;
         }
+
 
 
         .project-info h5 {
@@ -190,24 +193,51 @@
             margin: 5px 0 0;
         }
 
-       /* fade in & fade out */
+       
+       /* Footer */
+       footer {
+            background-color: #454343; /* Black background */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #fff; /* Ensure footer links are white */
+        }
+
+        .footer i:hover {
+            color: #626947; /* Matches navbar hover color */
+        }
+       /* CSS for fade-in and fade-out transitions */
        body {
-            opacity: 0;  /* Initially hide the body */
-            transform: translateY(1px);  /* Start position  */
-            transition: opacity 2s ease-in-out, transform 2s ease-in-out;  /* Slow fade-in with vertical motion */
+            opacity: 1;
+            transition: opacity 0.8s ease-in-out;
         }
-
-        /* Fade-in class for transition */
-        .fade-in {
-            opacity: 1;  /* Fully visible */
-            transform: translateY(0);  /* Move to the original position */
-        }
-
-        /* Fade-out class for transition */
-        .fade-out {
+        /* White overlay for fade effect */
+        .white-fade-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
             opacity: 0;
-            transform: translateY(1px);  /* Slightly move down during fade-out */
+            transition: opacity 0.8s ease-in-out;
+            z-index: 9999;
+            pointer-events: none;
         }
+
+        body.fade-in .white-fade-overlay {
+            opacity: 0; /* No overlay when fading in */
+        }
+
+        body.fade-out .white-fade-overlay {
+            opacity: 1; /* Full white overlay when fading out */
+        }
+
+
     </style>
 </head>
 <body>
@@ -238,7 +268,7 @@
     <section class="projects py-5">
         <div class="overlay"></div> <!-- Overlay div -->
         <div class="container">
-            <h2 class="text-center mb-5" style="font-size: 1.1rem;">PROJECTS</h2>
+            <h2 class="text-center mb-5">Projects</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-6 mb-4">
                     <a href="card1.html">
@@ -252,12 +282,12 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-4">
-                    <a href="card2.html">
+                    <a href="card1.html">
                         <div class="project-card shadow">
-                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003228/notion%20roots/r4ybpkxbutszy2tvcnzq.jpg" class="img-fluid" alt="Project 2">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003228/notion%20roots/kqdfgboktym81zxuhv67.jpg" class="img-fluid" alt="Project 1">
                             <div class="project-info">
-                                <h5>COMMERCIAL</h5>
-                                <p>A sustainable commercial space designed with modern minimalism in mind.</p>
+                                <h5>RESIDENTIAL</h5>
+                                <p>Eco-friendly residential architecture project designed to blend with nature.</p>
                             </div>
                         </div>
                     </a>
@@ -288,6 +318,16 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="text-white text-center py-3">
+        <p>&copy; NOTION ROOTS 2024 | <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
+        <div>
+            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fa-brands fa-instagram text-white mx-2"></i></a>
+            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fa-brands fa-facebook text-white mx-2"></i></a>
+            <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank"><i class="fa-brands fa-youtube text-white mx-2"></i></a>
+        </div>
+    </footer>
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
@@ -302,25 +342,37 @@
         });
     </script>
     <script>
-        // Handle page transitions with fade-out and fade-in effect
-        function handlePageTransition(event, targetPage) {
-            event.preventDefault();  // Prevent immediate navigation
+        document.addEventListener("DOMContentLoaded", () => {
+    const overlay = document.querySelector('.white-fade-overlay');
+
+    // Initial fade-in effect when the page loads
+    requestAnimationFrame(() => {
+        overlay.style.opacity = '0';
+    });
+
+    // Apply fade-out on link clicks
+    document.querySelectorAll('a[href]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+
+            // Ensure it’s an internal link and not a hash
+            if (href && href.indexOf('#') === -1) {
+                e.preventDefault(); // Prevent default navigation
+
+                // Trigger fade-out transition
+                overlay.style.opacity = '1';
+
+                // Delay the navigation until after the fade-out
+                setTimeout(() => {
+                    window.location.href = href;
+                }, 800); // Match 800ms with CSS transition duration
+            }
+        });
+    });
+
     
-            // Add fade-out class to body
-            document.body.classList.add('fade-out');
-    
-            // Wait for the fade-out to complete (500ms) before navigating
-            setTimeout(function() {
-                // Add a load event listener for the next page
-                window.location.href = targetPage;  // Navigate to the next page
-            }, 500);  // Match this duration with the fade-out transition time
-        }
-    
-        // Ensure the fade-in effect is applied when the page is loaded
-        window.addEventListener('load', function () {
-            document.body.classList.remove('fade-out');  // Remove fade-out effect (if any)
-            document.body.classList.add('fade-in');  // Apply fade-in effect
-        });
+    });
+
     </script>
 </body>
 </html>
