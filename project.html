@@ -268,12 +268,12 @@
     <section class="projects py-5">
         <div class="overlay"></div> <!-- Overlay div -->
         <div class="container">
-            <h2 class="text-center mb-5">Projects</h2>
+            <h2 class="text-center mb-5" style="font-size: 1.1rem;">PROJECTS</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-6 mb-4">
                     <a href="card1.html">
                         <div class="project-card shadow">
-                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003228/notion%20roots/kqdfgboktym81zxuhv67.jpg" class="img-fluid" alt="Project 1">
+                            <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/12.jpg" class="img-fluid" alt="Project 1">
                             <div class="project-info">
                                 <h5>RESIDENTIAL</h5>
                                 <p>Eco-friendly residential architecture project designed to blend with nature.</p>
@@ -282,20 +282,21 @@
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-6 mb-4">
-                    <a href="card1.html">
+                    <a href="card2.html">
                         <div class="project-card shadow">
-                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003228/notion%20roots/kqdfgboktym81zxuhv67.jpg" class="img-fluid" alt="Project 1">
+                            <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/04.jpg" class="img-fluid" alt="Project 2">
                             <div class="project-info">
-                                <h5>RESIDENTIAL</h5>
-                                <p>Eco-friendly residential architecture project designed to blend with nature.</p>
+                                <h5>COMMERCIAL</h5>
+                                <p>A sustainable commercial space designed with modern minimalism in mind.</p>
                             </div>
                         </div>
                     </a>
                 </div>
+                
                 <div class="col-md-6 col-lg-6 mb-4">
                     <a href="card3.html">
                         <div class="project-card shadow">
-                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731003229/notion%20roots/imbioil5mqpdhg31y4fc.png" class="img-fluid" alt="Project 3">
+                            <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/20_01.jpg" class="img-fluid" alt="Project 3">
                             <div class="project-info">
                                 <h5>SPORTS</h5>
                                 <p>An eco-tourism project with natural materials to harmonize with the surroundings.</p>
@@ -306,7 +307,7 @@
                 <div class="col-md-6 col-lg-6 mb-4">
                     <a href="card4.html">
                         <div class="project-card shadow">
-                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069716/notion%20roots/curousals/ck4ju7ny6kctgpgh7tzf.jpg" class="img-fluid" alt="Project 1">
+                            <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/24.jpg" class="img-fluid" alt="Project 1">
                             <div class="project-info">
                                 <h5>INTERIOR</h5>
                                 <p>Eco-friendly residential architecture project designed to blend with nature.</p>
@@ -370,8 +371,13 @@
         });
     });
 
-    
+    // Handle back/forward navigation with caching
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+            overlay.style.opacity = '0';
+        }
     });
+});
 
     </script>
 </body>
