@@ -19,7 +19,7 @@
             transition: background-color 0.5s ease;
         }
         .navbar.scrolled {
-            background-color: #454343
+            background-color: #454343;
         }
         .navbar .navbar-nav .nav-link {
             color: white;
@@ -57,6 +57,7 @@
             position: relative;
             z-index: 2;
         }
+
         /* Content Sections */
         .content-section {
             padding: 50px 0;
@@ -82,6 +83,29 @@
         }
         .gallery img:hover {
             transform: scale(1.05);
+        }
+
+        /* Scroll Button */
+        .scroll-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            z-index: 1000;
+            cursor: pointer;
+        }
+        .scroll-button:hover {
+            color: #aaa86b;
+            background: rgba(0, 0, 0, 0.7);
         }
     </style>
 </head>
@@ -113,28 +137,32 @@
         <div class="container">
             <h1>Residential Project: Eco Villa</h1>
             <p>A showcase of our latest eco-friendly villa design</p>
+            <!-- Scroll Button -->
+            <div class="scroll-button scroll-down">
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </section>
 
     <!-- Project Details Section -->
-    <section class="content-section container">
+    <section id="content-section" class="content-section container">
         <div class="row">
             <div class="col-md-6">
-                <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/gdkh5sar5gqsji0b2yao.jpg" alt="Project Interior">
+                <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg" alt="Project Interior">
             </div>
             <div class="col-md-6">
                 <h3>Project Overview</h3>
-                <p>Our Eco Villa project combines sustainability with luxury, utilizing green building techniques and materials to create a comfortable, eco-friendly living space...</p>
+                <p>The HEAVEN is a groundbreaking residential project that harmoniously blends sustainability with modern luxury. Designed with eco-conscious principles, the villa incorporates renewable materials, energy-efficient systems, and sustainable construction methods to create a living space that minimizes environmental impact. Every aspect of the HEAVEN reflects a commitment to preserving nature, from the integration of rainwater harvesting systems and solar panels to the use of low-flow fixtures and energy-saving appliances. The villa’s biophilic design ensures a seamless connection with the outdoors, offering open spaces, natural ventilation, and lush greenery that promote well-being. Combining sleek, modern aesthetics with functionality, the Eco Villa redefines comfortable living by providing a serene, innovative, and environmentally responsible home for future generations.</p>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
     <section class="container gallery">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069716/notion%20roots/curousals/ck4ju7ny6kctgpgh7tzf.jpg" alt="Gallery Image 1">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730991125/bqpa2y7qjhhxl61o7lva.jpg" alt="Gallery Image 2">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908396/akrlt9zz1h0jxgxlivay.jpg" alt="Gallery Image 3">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg" alt="Gallery Image 4">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534439/notion%20roots/zzo7mrrnrwedbynrsf6x.jpg" alt="Gallery Image 1">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534438/notion%20roots/kgisatpej8zrptqrpiy7.jpg" alt="Gallery Image 2">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534438/notion%20roots/ozctjdjclix92vbjb45e.jpg" alt="Gallery Image 3">
+        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534437/notion%20roots/int70aozzxrfoaddu9sy.jpg" alt="Gallery Image 4">
     </section>
 
     <!-- Bootstrap JS and dependencies -->
@@ -144,15 +172,41 @@
     <script>
         // Fade-in effect on page load
         window.addEventListener('load', function() {
-            document.body.style.opacity = '1'; // Trigger fade-in effect
+            document.body.style.opacity = '1';
         });
 
-        // Add 'scrolled' class to navbar on scroll for fading effect
+        // Navbar scroll effect
         $(window).scroll(function() {
             if ($(this).scrollTop() > 50) {
                 $('.navbar').addClass('scrolled');
             } else {
                 $('.navbar').removeClass('scrolled');
+            }
+        });
+
+        // Scroll button toggle functionality
+        const scrollButton = document.querySelector('.scroll-button');
+        const heroSection = document.querySelector('.hero');
+        const contentSection = document.getElementById('content-section');
+
+        scrollButton.addEventListener('click', function() {
+            if (scrollButton.classList.contains('scroll-down')) {
+                contentSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                heroSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        window.addEventListener('scroll', function() {
+            const scrollY = window.scrollY;
+            if (scrollY > window.innerHeight / 2) {
+                scrollButton.classList.remove('scroll-down');
+                scrollButton.classList.add('scroll-up');
+                scrollButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            } else {
+                scrollButton.classList.remove('scroll-up');
+                scrollButton.classList.add('scroll-down');
+                scrollButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
             }
         });
     </script>
