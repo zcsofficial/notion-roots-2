@@ -85,28 +85,50 @@
             transform: scale(1.05);
         }
 
-        /* Scroll Button */
-        .scroll-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+        /* Scroll Indicator Animation */
+        .scroll-indicator {
+            position: fixed; /* Fixed position to stick to the screen */
+            bottom: 20px; /* Distance from the bottom of the page */
+            right: 20px; /* Distance from the right side of the page */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 1000;
-            cursor: pointer;
+            cursor: pointer; /* Make it clear it's clickable */
+            z-index: 1000; /* Ensure it stays on top */
+            opacity: 1; /* Fully visible initially */
+            transition: opacity 0.3s ease; /* Smooth show/hide effect */
         }
-        .scroll-button:hover {
-            color: #aaa86b;
-            background: rgba(0, 0, 0, 0.7);
+
+        .arrow {
+            width: 15px;
+            height: 15px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg);
+            margin: 5px;
+            animation: bounce 1.5s infinite;
+            opacity: 0.7;
         }
+
+        .arrow:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .arrow:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(10px) rotate(45deg);
+                opacity: 1;
+            }
+        }
+
         /* Popup Modal */
         .popup-modal {
             display: none;
@@ -223,9 +245,11 @@
             <h1>Residential Project: HEAVEN</h1>
             <p>A showcase of our latest eco-friendly villa design</p>
             <!-- Scroll Button -->
-            <div class="scroll-button scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="scroll-indicator mb-5">
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+            </div>            
         </div>
     </section>
 
@@ -243,7 +267,7 @@
     </section>
 
     <!-- Gallery Section -->
-    <section class="container gallery">
+    <section id="gallery-section" class="container gallery">
         <div class="gallery-item" data-index="0">
             <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534439/notion%20roots/zzo7mrrnrwedbynrsf6x.jpg" alt="Gallery Image 1">
         </div>
@@ -298,30 +322,29 @@
         });
 
         // Scroll button toggle functionality
-        const scrollButton = document.querySelector('.scroll-button');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
         const heroSection = document.querySelector('.hero');
-        const contentSection = document.getElementById('content-section');
+        const gallerySection = document.querySelector('.gallery');
 
-        scrollButton.addEventListener('click', function() {
-            if (scrollButton.classList.contains('scroll-down')) {
-                contentSection.scrollIntoView({ behavior: 'smooth' });
+        // Function to show or hide the scroll indicator
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY; // Current scroll position
+            const heroBottom = heroSection.offsetHeight; // Bottom of the hero section
+
+            if (scrollY > heroBottom) {
+                scrollIndicator.style.opacity = '0'; // Hide the indicator
+                scrollIndicator.style.pointerEvents = 'none'; // Disable clicks
             } else {
-                heroSection.scrollIntoView({ behavior: 'smooth' });
+                scrollIndicator.style.opacity = '1'; // Show the indicator
+                scrollIndicator.style.pointerEvents = 'all'; // Enable clicks
             }
         });
 
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            if (scrollY > window.innerHeight / 2) {
-                scrollButton.classList.remove('scroll-down');
-                scrollButton.classList.add('scroll-up');
-                scrollButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-            } else {
-                scrollButton.classList.remove('scroll-up');
-                scrollButton.classList.add('scroll-down');
-                scrollButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
-            }
+        // Scroll down smoothly to the gallery section when the indicator is clicked
+        scrollIndicator.addEventListener('click', function () {
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
         });
+
     </script>
     <script>
         const galleryItems = document.querySelectorAll('.gallery-item img');
