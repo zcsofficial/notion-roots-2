@@ -16,15 +16,20 @@
         box-sizing: border-box;
         font-family: 'century gothic', sans-serif;
     }
+        html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
     body {
         font-family: 'Century Gothic', sans-serif;
     }
 
 
-        .navbar {
+    .navbar {
         background-color: transparent;  /* Make navbar transparent */
-        }
-
+    }
     .projects {
         position: relative;
         background-image: url('https://res.cloudinary.com/dhuaf8e9z/image/upload/v1730908317/zfyxi1l9kacxw5gqytul.jpg');
@@ -32,7 +37,9 @@
         background-position: center;
         background-repeat: no-repeat;
         color: #fff;
+        min-height: 100vh; /* Full viewport height */
     }
+
 
     .projects .overlay {
         position: absolute;
@@ -48,30 +55,30 @@
         position: relative;
         z-index: 2; /* Ensures content is above overlay */
     }
-    .project-info {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 15px;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    text-align: center;
-}
+        .project-info {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        text-align: center;
+    }
 
-.project-info h5 {
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    margin: 0;
-    font-size: 1.2rem;
-}
+    .project-info h5 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
+        margin: 0;
+        font-size: 1.2rem;
+    }
 
-.project-info p {
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9rem;
-    margin: 5px 0 0;
-}
+    .project-info p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 0.9rem;
+        margin: 5px 0 0;
+    }
 
-.navbar .navbar-nav .nav-link {
+    .navbar .navbar-nav .nav-link {
             color: white;  /* Set the nav items to white color */
             font-size: 1.1rem;  /* Adjust font size if needed */
             font-weight: 400;  /* Adjust font weight for modern typography */
@@ -193,23 +200,6 @@
             margin: 5px 0 0;
         }
 
-       
-       /* Footer */
-       footer {
-            background-color: #454343; /* Black background */
-            color: #fff; /* White text */
-            text-align: center;
-            padding: 15px;
-            font-size: 0.9em;
-        }
-
-        footer a {
-            color: #fff; /* Ensure footer links are white */
-        }
-
-        .footer i:hover {
-            color: #626947; /* Matches navbar hover color */
-        }
        /* CSS for fade-in and fade-out transitions */
        body {
             opacity: 1;
@@ -279,7 +269,7 @@
     <section class="projects py-5">
         <div class="overlay"></div> <!-- Overlay div -->
         <div class="container">
-            <h2 class="text-center mb-5" style="font-size: 1.1rem;">PROJECTS</h2>
+            <h2 class="text-center mb-5 mt-3" style="font-size: 1.1rem;">PROJECTS</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-6 mb-4">
                     <a href="card1.html">
@@ -329,7 +319,7 @@
             </div>
         </div>
     </section>
-    
+
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
