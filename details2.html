@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Residential Project - Eco Villa</title>
+    <title>Residential Project - HEAVEN</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         /* Fade-in Effect */
         body {
@@ -17,6 +18,7 @@
         /* Fading navbar styling */
         .navbar {
             transition: background-color 0.5s ease;
+            z-index: 2;
         }
         .navbar.scrolled {
             background-color: #454343;
@@ -84,29 +86,173 @@
         .gallery img:hover {
             transform: scale(1.05);
         }
+        /* Sliding animation */
+        .gallery-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 20px auto; /* Center the gallery */
+}
 
-        /* Scroll Button */
-        .scroll-button {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: white;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
+.gallery-thumbnails {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-behavior: smooth; /* Smooth scroll fallback for keyboard navigation */
+    max-width: 90%; /* Gallery section width */
+    padding: 10px 0;
+}
+
+.gallery-item {
+    flex: 0 0 auto;
+    height: 25vh; /* Image height in viewport percentage */
+    margin-right: 15px; /* Space between thumbnails */
+    border-radius: 8px; /* Rounded corners for thumbnails */
+    overflow: hidden; /* Ensure image does not overflow */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Subtle shadow for depth */
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%; /* Fully fill the container while keeping height as 25vh */
+    object-fit: cover; /* Maintain aspect ratio and fill space */
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Smooth zoom-in effect */
+}
+
+.gallery-btn {
+    background-color: transparent;
+    color: #454343;
+    border: none;
+    padding: 10px 15px;
+    font-size: 80px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.gallery-btn:hover {
+    color: #7a3a; /* Slightly darker on hover */
+    transform: scale(1.1); /* Enlarge button on hover */
+}
+
+.gallery-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+
+
+        /* Scroll Indicator Animation */
+        .scroll-indicator {
+            position: fixed; /* Fixed position to stick to the screen */
+            bottom: 20px; /* Distance from the bottom of the page */
+            right: 20px; /* Distance from the right side of the page */
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            z-index: 1000;
-            cursor: pointer;
+            cursor: pointer; /* Make it clear it's clickable */
+            z-index: 1000; /* Ensure it stays on top */
+            opacity: 1; /* Fully visible initially */
+            transition: opacity 0.3s ease; /* Smooth show/hide effect */
         }
-        .scroll-button:hover {
-            color: #aaa86b;
-            background: rgba(0, 0, 0, 0.7);
+
+        .arrow {
+            width: 15px;
+            height: 15px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg);
+            margin: 5px;
+            animation: bounce 1.5s infinite;
+            opacity: 0.7;
         }
+
+        .arrow:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .arrow:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translateY(10px) rotate(45deg);
+                opacity: 1;
+            }
+        }
+
+        /* Popup container */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    max-width: 90%;
+    max-height: 90%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close-btn:hover {
+    color: #7a3a;
+}
+
+        /* Footer */
+       footer {
+            background-color: #454343; /* Black background */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: #fff; /* Ensure footer links are white */
+        }
+
+        .footer i:hover {
+            color: #626947; /* Matches navbar hover color */
+        }
+        .carousel-inner img {
+        height: 300px;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
     </style>
 </head>
 <body>
@@ -135,12 +281,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Residential Project: Eco Villa</h1>
+            <h1>Residential Project: HEAVEN</h1>
             <p>A showcase of our latest eco-friendly villa design</p>
             <!-- Scroll Button -->
-            <div class="scroll-button scroll-down">
-                <i class="fas fa-chevron-down"></i>
-            </div>
+            <div class="scroll-indicator mb-5">
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+                    <div class="arrow"></div>
+            </div>            
         </div>
     </section>
 
@@ -148,27 +296,135 @@
     <section id="content-section" class="content-section container">
         <div class="row">
             <div class="col-md-6">
-                <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg" alt="Project Interior">
+                <!-- Carousel replacing the static image -->
+                <div id="projectCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#projectCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#projectCarousel" data-slide-to="1"></li>
+                        <li data-target="#projectCarousel" data-slide-to="2"></li>
+                    </ol>
+    
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1731069717/notion%20roots/curousals/esqfcmkluh4h52aqpah1.jpg" class="d-block w-100" alt="Project Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732626198/notion%20roots/k77hhstrilung1vza79a.jpg" class="d-block w-100" alt="Project Image 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732626198/notion%20roots/ckl39hablifb4emyyc5m.jpg" class="d-block w-100" alt="Project Image 3">
+                        </div>
+                    </div>
+    
+                    <!-- Navigation Controls -->
+                    <a class="carousel-control-prev" href="#projectCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#projectCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
             </div>
             <div class="col-md-6">
                 <h3>Project Overview</h3>
-                <p>The HEAVEN is a groundbreaking residential project that harmoniously blends sustainability with modern luxury. Designed with eco-conscious principles, the villa incorporates renewable materials, energy-efficient systems, and sustainable construction methods to create a living space that minimizes environmental impact. Every aspect of the HEAVEN reflects a commitment to preserving nature, from the integration of rainwater harvesting systems and solar panels to the use of low-flow fixtures and energy-saving appliances. The villa’s biophilic design ensures a seamless connection with the outdoors, offering open spaces, natural ventilation, and lush greenery that promote well-being. Combining sleek, modern aesthetics with functionality, the Eco Villa redefines comfortable living by providing a serene, innovative, and environmentally responsible home for future generations.</p>
+                <p>
+                    The HEAVEN is a groundbreaking residential project that harmoniously blends sustainability with modern luxury. This eco-friendly villa showcases innovative design, cutting-edge technology, and a commitment to green living.
+                </p>
             </div>
         </div>
     </section>
+    
 
     <!-- Gallery Section -->
-    <section class="container gallery">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534439/notion%20roots/zzo7mrrnrwedbynrsf6x.jpg" alt="Gallery Image 1">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534438/notion%20roots/kgisatpej8zrptqrpiy7.jpg" alt="Gallery Image 2">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534438/notion%20roots/ozctjdjclix92vbjb45e.jpg" alt="Gallery Image 3">
-        <img src="https://res.cloudinary.com/dhuaf8e9z/image/upload/v1732534437/notion%20roots/int70aozzxrfoaddu9sy.jpg" alt="Gallery Image 4">
-    </section>
+    <div class="gallery-container">
+        <button class="gallery-btn prev-btn" id="prev-btn">&#8249;</button>
+        <div class="gallery-thumbnails" id="gallery-thumbnails">
+            <!-- Add all images here -->
+            <div class="gallery-item" data-index="0">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/53.jpg" alt="Gallery Image 1">
+            </div>
+            <div class="gallery-item" data-index="1">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/18.jpg" alt="Gallery Image 2">
+            </div>
+            <div class="gallery-item" data-index="2">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/26.jpg" alt="Gallery Image 3">
+            </div>
+            <div class="gallery-item" data-index="3">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/43.jpg" alt="Gallery Image 4">
+            </div>
+            <div class="gallery-item" data-index="4">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/35_01.jpg" alt="Gallery Image 5">
+            </div>
+            <div class="gallery-item" data-index="5">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/51.jpg" alt="Gallery Image 6">
+            </div>
+            <div class="gallery-item" data-index="6">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/50.jpg" alt="Gallery Image 7">
+            </div>
+            <div class="gallery-item" data-index="7">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/27.jpg" alt="Gallery Image 8">
+            </div>
+            <div class="gallery-item" data-index="8">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/22.jpg" alt="Gallery Image 9">
+            </div>
+            <div class="gallery-item" data-index="9">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/14.jpg" alt="Gallery Image 10">
+            </div>
+            <div class="gallery-item" data-index="10">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/25.jpg" alt="Gallery Image 11">
+            </div>
+            <div class="gallery-item" data-index="11">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/15.jpg" alt="Gallery Image 12">
+            </div>
+            <div class="gallery-item" data-index="12">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/28.jpg" alt="Gallery Image 13">
+            </div>
+            <div class="gallery-item" data-index="13">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/37.jpg" alt="Gallery Image 14">
+            </div>
+            <div class="gallery-item" data-index="14">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/44.jpg" alt="Gallery Image 15">
+            </div>
+            <div class="gallery-item" data-index="15">
+                <img src="https://raw.githubusercontent.com/KASHIP6/notion-roots/main/uploads/52.jpg" alt="Gallery Image 16">
+            </div>
+        </div>
+        <button class="gallery-btn next-btn" id="next-btn">&#8250;</button>
+    </div>
+    
+    
+    
+
+    <!-- Popup container -->
+        <div id="image-popup" class="popup">
+            <span id="close-popup" class="close-btn">&times;</span>
+            <img id="popup-image" class="popup-content" src="" alt="Enlarged Image">
+        </div>
+
+
+    <!-- Footer -->
+    <footer class="text-white text-center py-3">
+        <p>&copy; NOTION ROOTS 2024 | <a href="mailto:info@notionroots.com" class="text-white">info@notionroots.com</a> | Follow us on social media</p>
+        <div>
+            <a href="https://www.instagram.com/notionroots/profilecard/?igsh=dTRramxmb2lzODlz" target="_blank"><i class="fa-brands fa-instagram text-white mx-2"></i></a>
+            <a href="https://www.facebook.com/notion.roots/" target="_blank"><i class="fa-brands fa-facebook text-white mx-2"></i></a>
+            <a href="https://www.youtube.com/channel/UCM6OKcVRpWkxai23umPqiCA" target="_blank"><i class="fa-brands fa-youtube text-white mx-2"></i></a>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script>
         // Fade-in effect on page load
         window.addEventListener('load', function() {
@@ -185,30 +441,155 @@
         });
 
         // Scroll button toggle functionality
-        const scrollButton = document.querySelector('.scroll-button');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
         const heroSection = document.querySelector('.hero');
-        const contentSection = document.getElementById('content-section');
+        const gallerySection = document.querySelector('.gallery');
 
-        scrollButton.addEventListener('click', function() {
-            if (scrollButton.classList.contains('scroll-down')) {
-                contentSection.scrollIntoView({ behavior: 'smooth' });
+        // Function to show or hide the scroll indicator
+        window.addEventListener('scroll', function () {
+            const scrollY = window.scrollY; // Current scroll position
+            const heroBottom = heroSection.offsetHeight; // Bottom of the hero section
+
+            if (scrollY > heroBottom) {
+                scrollIndicator.style.opacity = '0'; // Hide the indicator
+                scrollIndicator.style.pointerEvents = 'none'; // Disable clicks
             } else {
-                heroSection.scrollIntoView({ behavior: 'smooth' });
+                scrollIndicator.style.opacity = '1'; // Show the indicator
+                scrollIndicator.style.pointerEvents = 'all'; // Enable clicks
             }
         });
 
-        window.addEventListener('scroll', function() {
-            const scrollY = window.scrollY;
-            if (scrollY > window.innerHeight / 2) {
-                scrollButton.classList.remove('scroll-down');
-                scrollButton.classList.add('scroll-up');
-                scrollButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-            } else {
-                scrollButton.classList.remove('scroll-up');
-                scrollButton.classList.add('scroll-down');
-                scrollButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        // Scroll down smoothly to the gallery section when the indicator is clicked
+        scrollIndicator.addEventListener('click', function () {
+            gallerySection.scrollIntoView({ behavior: 'smooth' });
+        });
+
+    </script>
+    
+    <script>
+        const galleryThumbnails = document.getElementById('gallery-thumbnails');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+
+        // Set the scroll step dynamically based on item width + margin
+        const galleryItem = document.querySelector('.gallery-item');
+        const scrollStep = galleryItem.offsetWidth + parseInt(getComputedStyle(galleryItem).marginRight);
+
+        // Preload all images
+        const preloadImages = () => {
+            const images = document.querySelectorAll('.gallery-item img');
+            let loadedImages = 0;
+
+            return new Promise((resolve) => {
+                images.forEach((img) => {
+                    const tempImg = new Image();
+                    tempImg.src = img.src;
+                    tempImg.onload = () => {
+                        loadedImages++;
+                        if (loadedImages === images.length) {
+                            resolve(); // Resolve once all images are loaded
+                        }
+                    };
+                    tempImg.onerror = () => {
+                        console.warn(`Failed to load image: ${img.src}`);
+                        loadedImages++;
+                        if (loadedImages === images.length) {
+                            resolve(); // Resolve even if some images fail to load
+                        }
+                    };
+                });
+            });
+        };
+
+        // Helper function for smooth scrolling with infinite looping
+        function scrollGallery(direction) {
+            const maxScroll = galleryThumbnails.scrollWidth - galleryThumbnails.clientWidth;
+
+            if (direction === 1) {
+                // Scroll forward
+                if (galleryThumbnails.scrollLeft + galleryThumbnails.clientWidth >= galleryThumbnails.scrollWidth) {
+                    // If at the end, reset to the beginning
+                    galleryThumbnails.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    // Otherwise, scroll to the next image
+                    galleryThumbnails.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                }
+            } else if (direction === -1) {
+                // Scroll backward
+                if (galleryThumbnails.scrollLeft === 0) {
+                    // If at the beginning, reset to the end
+                    galleryThumbnails.scrollTo({ left: maxScroll, behavior: 'smooth' });
+                } else {
+                    // Otherwise, scroll to the previous image
+                    galleryThumbnails.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                }
             }
+        }
+
+        // Event listeners for navigation buttons
+        prevBtn.addEventListener('click', () => scrollGallery(-1));
+        nextBtn.addEventListener('click', () => scrollGallery(1));
+
+        // Autoplay Functionality with Infinite Loop
+        let autoplayInterval;
+
+        const startAutoplay = () => {
+            autoplayInterval = setInterval(() => {
+                scrollGallery(1); // Move to the next slide
+            }, 3000); // Slide every 3 seconds
+        };
+
+        // Pause autoplay on mouse hover
+        galleryThumbnails.addEventListener('mouseover', () => clearInterval(autoplayInterval));
+
+        // Resume autoplay when the mouse leaves
+        galleryThumbnails.addEventListener('mouseout', () => {
+            startAutoplay();
+        });
+
+        // Initialize the gallery after preloading images
+        preloadImages().then(() => {
+            console.log('All images preloaded. Starting gallery...');
+            startAutoplay();
         });
     </script>
+    
+    <!-- popup modal -->
+
+    <script>
+        // Get popup elements
+        const imagePopup = document.getElementById('image-popup');
+        const popupImage = document.getElementById('popup-image');
+        const closePopupBtn = document.getElementById('close-popup');
+
+        // Function to open the popup with the clicked image
+        function openPopup(imgSrc) {
+            popupImage.src = imgSrc;
+            imagePopup.style.display = 'flex'; // Show the popup
+        }
+
+        // Function to close the popup
+        function closePopup() {
+            imagePopup.style.display = 'none'; // Hide the popup
+        }
+
+        // Add click event listeners to all gallery images
+        const galleryImages = document.querySelectorAll('.gallery-item img');
+        galleryImages.forEach((img) => {
+            img.addEventListener('click', () => openPopup(img.src));
+        });
+
+        // Close the popup when clicking the close button
+        closePopupBtn.addEventListener('click', closePopup);
+
+        // Close the popup when clicking outside the image
+        imagePopup.addEventListener('click', (e) => {
+            if (e.target === imagePopup) {
+                closePopup();
+            }
+        });
+
+    </script>
+    
 </body>
 </html>
